@@ -213,6 +213,7 @@ globalFuncs.getDefaultTokensAndNetworkType =  function getDefaultTokensAndNetwor
     //commented here because we need only eth right now
     var tokenMappings = {
         'eth': require('./tokens/ethTokens.json'),
+        'xdc': require('./tokens/xdcTokens.json'),
         //'etc': require('./tokens/etcTokens.json'),
         //'rop': require('./tokens/ropstenTokens.json'),
         //'kov': require('./tokens/kovanTokens.json'),

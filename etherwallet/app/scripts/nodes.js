@@ -7,8 +7,10 @@ var nodes = function() {}
 nodes.customNode = require('./nodeHelpers/customNode');
 nodes.infuraNode = require('./nodeHelpers/infura');
 nodes.metamaskNode = require('./nodeHelpers/metamask');
+nodes.XDC = require('./nodeHelpers/xdc');
 nodes.nodeTypes = {
     ETH: "ETH",
+    XDC: "XDC",
     /*ETC: "ETC",
     MUS: "MUSIC",
     Ropsten: "ROPSTEN ETH",
@@ -82,7 +84,19 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/ethAbi.json'),
         'service': 'infura.io',
         'lib': new nodes.infuraNode('https://mainnet.infura.io/mew')
-    }
+    },
+    'XDC': {
+        'name': 'XDC',
+        'blockExplorerTX': 'http://90.0.0.68:35108/[[txHash]]',
+        'blockExplorerAddr': 'http://90.0.0.68:35108/[[address]]',
+        'type': nodes.nodeTypes.XDC,
+        'eip155': true,
+        'chainId': 9821720740,
+        'tokenList': require('./tokens/xdcTokens.json'),
+        'abiList': require('./abiDefinitions/xdcAbi.json'),
+        'service': 'Xinfin.io',
+        'lib': require('./nodeHelpers/xdc')
+    },
     /*,'eth_giveth': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',

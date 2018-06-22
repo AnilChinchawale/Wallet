@@ -1,0 +1,130 @@
+function buffer (194) calls by methonds
+	function 19 decryptWalletCtrl (--etherwallet-master.js)
+	function 27 signMsgCtrl (--removed.js)
+	function 48 ens (--removed.js)
+	function 61 Wallet (--etherwallet-master.js)
+	function 88 DigitalBitboxEth (--etherwallet-master.js)
+	function 89 DigitalBitboxUsb (--etherwallet-master.js)
+	function 90 LedgerEth (--etherwallet-master.js)
+	function 91 Ledger3 (--etherwallet-master.js)
+	function 129 uiFuncs (--etherwallet-master.js)
+	function 168 AES (--etherwallet-master.js)
+	function 169 listCiphers (--etherwallet-master.js)
+	function 170 createDecipher (--etherwallet-master.js)
+	function 171 createCipher (--etherwallet-master.js)
+	function 172 GHASH (--etherwallet-master.js)
+	function 174 xor (--etherwallet-master.js)
+	function 175 xor (--etherwallet-master.js)
+	function 176 encrypt (--etherwallet-master.js)
+	function 177 encryptByte (--etherwallet-master.js)
+	function 178 xor (--etherwallet-master.js)
+	function 180 xor (--etherwallet-master.js)
+	function 181 aes (--etherwallet-master.js)
+	function 183 DES (--etherwallet-master.js)
+	function 185 crt (--etherwallet-master.js)
+	function 190 rsa (--etherwallet-master.js)
+	function 191 verify (--etherwallet-master.js)
+	function 193 exports xor (--etherwallet-master.js)
+	
+	
+
+removed function (--etherwallet-master.js)
+	function 21
+	function 20
+	function 24
+	function 25
+	function 23
+	function 27
+	function 28
+	function 42
+	function 46
+	function 47
+	function 48
+	function 49
+	function 50
+	function 51
+	function 52
+	function 53
+	function 54
+	function 55
+	function 63
+	function 64
+	function 65
+	function 66
+	function 95
+	function 96
+	function 97
+	function 98
+	function 99
+	function 101
+	function 103
+
+
+
+execution starting point of angular js
+	function 60
+
+
+
+
+
+function which affect the most when we delete it
+	function 60
+	function 61
+	function 72
+	function 129
+
+
+
+
+function which are commented (--etherwallet-master.js)
+	function 88 DigitalBitboxEth
+	function 89 DigitalBitboxUsb
+	function 90 LedgerEth
+	function 91 Ledger3
+	function 92 TrezorConnect
+
+
+
+
+function which was already commented
+	function 95
+	function 96
+	function 97
+	function 98
+	function 99
+	function 101
+	function 103
+
+
+function who was empty
+	function 104
+	function 105
+	function 106
+	function 108
+	function 109
+	function 110
+	function 111
+	function 112
+	function 113
+	function 114
+	function 115
+	function 116
+	function 117
+	function 118
+	function 119
+	function 120
+	function 121
+	function 122
+	function 123
+	function 124
+	function 126
+	function 127
+	function 128
+	function 166
+
+
+
+Annotation
+-- 				source where that is exists
+function #		from the function where it is written in the source file

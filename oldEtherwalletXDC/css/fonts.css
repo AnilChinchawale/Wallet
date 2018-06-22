@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+/*
+@font-face {
+	font-family: 'MuseoSans';
+	src: url('../fonts/museosans_500-webfont.eot');
+	src: local('☺'), url('../fonts/museosans_500-webfont.woff') format('woff'), url('../fonts/museosans_500-webfont.ttf') format('truetype'), url('../fonts/museosans_500-webfont.svg#webfontFyIeHTKm') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}*/
+
+@font-face {
+	font-family: 'ReklameScript';
+	src: local('☺'), url('../fonts/ReklameScript.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: local('☺'), url('../fonts/Montserrat-Bold.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Futura';
+	src: local('☺'), url('../fonts/futura.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}

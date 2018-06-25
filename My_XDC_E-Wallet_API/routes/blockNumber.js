@@ -5,10 +5,11 @@ var cors = require('cors');
 var router = express.Router();
 
 router.get('/', cors(), function(req, res) {
-	console.log("in texStatus");
+	console.log("in blockNumber");
     var web3 = Web3.initiateWeb3();
     console.log("body::::::::::::: ");
-    var receipt = web3.eth.getTransaction("0x1cf824662fda2bb33fb526e42c91a48a98f642494bdce398db10371eb04ee6d3");
+    var receipt =  web3.eth.blockNumber;
+    console.log("receipt  ",receipt);
 
     res.status(200).json(receipt);
 });

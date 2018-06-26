@@ -1,6 +1,6 @@
 'use strict';
 var etherscan = function() {}
-etherscan.SERVERURL = "http://78.129.212.204:35108/";
+etherscan.SERVERURL = "http://90.0.0.68:35108/";
 etherscan.pendingPosts = [];
 etherscan.config = {
     headers: {
@@ -25,6 +25,8 @@ etherscan.getBalance = function(addr, callback) {
         address: addr,
         tag: 'latest'
     }, function(data) {
+      console.log("balance         :",data);
+
         if (data.message != 'OK') callback({ error: true, msg: data.message, data: '' });
         else callback({ error: false, msg: '', data: { address: addr, balance: data.result } });
     });
@@ -117,7 +119,7 @@ etherscan.queuePost= function() {
     data.apikey = 'DSH5B24BQYKD1AD8KUCDY3SAQSS6ZAU175';
     ajaxReq.http.post(this.SERVERURL+data.action, ajaxReq.postSerializer(data), this.config).then(function(data) {
         callback(data.data);
-        console.log("queuePost",data);
+        console.log("queuePost  ",data);
         parentObj.pendingPosts.splice(0, 1);
         if (parentObj.pendingPosts.length > 0) parentObj.queuePos();
     }, function(data) {

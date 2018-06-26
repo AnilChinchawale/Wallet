@@ -14,5 +14,4 @@ router.post('/', cors(), function(req, res) {
     res.status(200).json(receipt);
 });
 
-
 module.exports = router;

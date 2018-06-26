@@ -10,6 +10,7 @@ node_modules/
 deploy/
 json_relay_node/node_modules/
 dist/node_modules/
+dist/
 _ens/
 *.zip
 cert.pem

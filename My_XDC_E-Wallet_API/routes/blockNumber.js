@@ -4,7 +4,7 @@ var router = express.Router();
 var cors = require('cors');
 var router = express.Router();
 
-router.get('/', cors(), function(req, res) {
+router.post('/', cors(), function(req, res) {
 	console.log("in blockNumber");
     var web3 = Web3.initiateWeb3();
     console.log("body::::::::::::: ");

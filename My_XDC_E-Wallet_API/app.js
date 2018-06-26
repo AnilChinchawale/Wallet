@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var txStatusRouter = require('./routes/txStatus');
-var blockNumber = require('./routes/blockNumber');
+var transactionByHashRouter = require('./routes/transactionByHash');
+var blockNumberRouter = require('./routes/blockNumber');
 
 
 var app = express();
@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/txStatus', txStatusRouter);
-app.use('/blockNumber', blockNumber);
+app.use('/transactionByHash', transactionByHashRouter);
+app.use('/blockNumber', blockNumberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -96,7 +96,7 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/xdcAbi.json'),
         'service': 'Xinfin.io',
         'lib': require('./nodeHelpers/xdc')
-    },
+    }
     /*,'eth_giveth': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',

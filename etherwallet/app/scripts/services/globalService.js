@@ -51,12 +51,13 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: true,
     cx: false
   },
+  //made comment to contract
   contracts: {
     id: 6,
     name: "NAV_Contracts",
     url: "contracts",
-    mew: true,
-    cx: true
+    mew: false,
+    cx: false
   },
   //made both mew: false cx: false
   ens: {

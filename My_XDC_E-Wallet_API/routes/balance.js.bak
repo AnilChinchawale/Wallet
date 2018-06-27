@@ -15,7 +15,7 @@ router.post('/', cors(), function(req, res) {
     console.log("body::::::::::::: ",req.body.address);
 		var coin = contract.getCoinInstance();
 		var result = coin.balanceOf(req.body.address);
-		var balance =""+result.c[0]+result.c[1];
+		var balance =result.c[0]+result.c[1]+"";
 		
 		 let temp = parseInt(balance);
 		 let hex = temp.toString(16);

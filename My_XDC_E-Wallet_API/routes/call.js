@@ -7,14 +7,12 @@ var coin = require('../web3_modules/coin_abi');
 
 
 
-router.post('/', cors(), function(req, res) {
-	console.log("in txStatus");
-    console.log("body::::::::::::: ",req.body.txhash);
-    var receipt = web3.eth.getTransaction(req.body.txhash);
-	console.log("in texStatus",receipt);
+
+router.post('/call', cors(), function(req, res) {
+	var receipt = web3.eth.call(req.body.to,req.body.data);
+    console.log("receipt  ",receipt);
     res.status(200).json(receipt);
 });
-
 
 
 

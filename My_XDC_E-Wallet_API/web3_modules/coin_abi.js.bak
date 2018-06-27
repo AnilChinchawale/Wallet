@@ -2,7 +2,7 @@ const Web3 = require('./initiateWeb3');
 
 function getCoinInstance(){
 	var web3=Web3.initiateWeb3();
-    var coinAddress = '0xa0e512419eb21850b169358ae315e4eea2be1bed';
+    var coinAddress = '0x84a5959482477c8140a5450e62316a88726420e3';
     var coinabi = [
 	{
 		"constant": false,

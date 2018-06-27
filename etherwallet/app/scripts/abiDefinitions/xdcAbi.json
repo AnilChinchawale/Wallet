@@ -1,7 +1,7 @@
 [
 	{ "name": "Select a contract...", "address": "", "abi": "" },
 	{
-		"name": "XDC",
+		"name": "XDCe",
 		"address": "0xa0e512419eb21850b169358ae315e4eea2be1bed",
 		"comment": "",
 		"abi":

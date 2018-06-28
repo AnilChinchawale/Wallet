@@ -84,13 +84,13 @@
     </div>
 
     <div class="btn-group">
-      <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
+      <!--<a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
         {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}
         <i class="caret"></i>
-      </a>
-      <ul class="dropdown-menu" ng-show="dropdownContracts">
+      </a>-->
+      <ul class="" ng-show="dropdownContracts">
         <li ng-repeat="func in contract.functions track by $index">
-          <a ng-click="selectFunc($index)">
+          <a ng-init="selectFunc($index)">
             {{func.name}}
           </a>
         </li>
@@ -105,8 +105,7 @@
 
         <div class="item write-address" ng-switch-when="address">
           <label>
-            {{input.name}}
-            <small>{{input.type}}</small>
+            {{input.name}}<small>{{input.type}}</small>
           </label>
           <div class="row">
             <div class="col-xs-11">
@@ -137,7 +136,7 @@
                  ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'" />
         </p>
 
-        <p class="item write-string" ng-switch-when="string">
+        <!--<p class="item write-string" ng-switch-when="string">
           <label>
             {{input.name}} <small> {{input.type}} </small>
           </label>
@@ -175,7 +174,7 @@
                 False
             </label>
           </span>
-        </p>
+        </p>-->
         <p class="item" ng-switch-default>
           <label> {{input.name}} <small> {{input.type}} </small> </label>
           <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
@@ -228,7 +227,7 @@
           <input class="form-control" type="text" placeholder="0x151bc..." ng-model="output.value" readonly/>
         </p>
 
-        <!-- Boolean -->
+        <!-- Boolean--> 
         <p class="item write-boolean" ng-switch-when="bool">
           <label>
             &#8627; {{output.name}}

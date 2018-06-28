@@ -1,7 +1,7 @@
-<main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
+<main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak ng-init="initContract()">
 
   <!-- Title -->
-  <div class="block text-center">
+  <div class="block text-center" >
     <h1>
       <a translate="NAV_InteractContract"
          ng-class="{'isActive': visibility=='interactView'}"
@@ -16,15 +16,15 @@
       </a>
     </h1>
   </div>
-  <!-- / Title -->
+  <!-- Title -->
 
   <!-- Interact Contracts -->
-  <article class="row block" ng-show="visibility=='interactView'">
+  <!--<article class="row block" ng-show="visibility=='interactView'">
 
     @@if (site === 'mew' ) { @@include( '../includes/contracts-interact-1.tpl', { "site": "mew" } ) }
     @@if (site === 'cx'  ) { @@include( '../includes/contracts-interact-1.tpl', { "site": "cx"  } ) }
 
-  </article>
+  </article>-->
 
   <article class="row block" ng-show="visibility=='interactView' && showReadWrite">
 

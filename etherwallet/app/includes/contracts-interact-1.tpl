@@ -1,12 +1,12 @@
 
-<!-- Address -->
+<!-- Address 
 <section class="col-sm-6 clearfix">
   <div class="row">
-    <address-field labeltranslated="CONTRACT_Title" var-name="contract.address"></address-field>
+    <address-field labeltranslated="CONTRACT_Title" var-name="contract.address" value="{{contract.address}}"></address-field>
   </div>
 </section>
-
-<!-- Select Contract Dropdown -->
+-->
+<!-- Select Contract Dropdown 
 <section class="col-sm-6 clearfix">
   <label translate="CONTRACT_Title_2">
     Select Existing Contract
@@ -32,8 +32,8 @@
     </ul>
   </div>
 </section>
-
-<!-- ABI Textarea -->
+-->
+<!-- ABI Textarea 
 <section class="col-xs-12 clearfix">
   <label translate="CONTRACT_Json">
     ABI / JSON Interface
@@ -44,8 +44,8 @@
             ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'"
             ng-model="contract.abi"></textarea>
 </section>
-
-<!-- Button -->
+-->
+<!-- Button 
 <section class="col-xs-12 clearfix">
   <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
-</section>
+</section>-->

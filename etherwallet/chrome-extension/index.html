@@ -21,7 +21,7 @@
 <meta name="robots" content="index,follow">
 <meta name="googlebot" content="index,follow">
 <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
-<link href="images/fav/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="images/fav/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
 <link href="images/fav/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
 <link href="images/fav/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
 <link href="images/fav/manifest.json" rel="manifest">
@@ -1782,10 +1782,10 @@
 </main>
 
 
-    <main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
+    <main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak ng-init="initContract()">
 
   <!-- Title -->
-  <div class="block text-center">
+  <div class="block text-center" >
     <h1>
       <a translate="NAV_InteractContract"
          ng-class="{'isActive': visibility=='interactView'}"
@@ -1800,20 +1800,20 @@
       </a>
     </h1>
   </div>
-  <!-- / Title -->
+  <!-- Title -->
 
   <!-- Interact Contracts -->
-  <article class="row block" ng-show="visibility=='interactView'">
+  <!--<article class="row block" ng-show="visibility=='interactView'">
 
      
-<!-- Address -->
+<!-- Address 
 <section class="col-sm-6 clearfix">
   <div class="row">
-    <address-field labeltranslated="CONTRACT_Title" var-name="contract.address"></address-field>
+    <address-field labeltranslated="CONTRACT_Title" var-name="contract.address" value="{{contract.address}}"></address-field>
   </div>
 </section>
-
-<!-- Select Contract Dropdown -->
+-->
+<!-- Select Contract Dropdown 
 <section class="col-sm-6 clearfix">
   <label translate="CONTRACT_Title_2">
     Select Existing Contract
@@ -1839,8 +1839,8 @@
     </ul>
   </div>
 </section>
-
-<!-- ABI Textarea -->
+-->
+<!-- ABI Textarea 
 <section class="col-xs-12 clearfix">
   <label translate="CONTRACT_Json">
     ABI / JSON Interface
@@ -1851,15 +1851,15 @@
             ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'"
             ng-model="contract.abi"></textarea>
 </section>
-
-<!-- Button -->
+-->
+<!-- Button 
 <section class="col-xs-12 clearfix">
   <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
-</section>
+</section>-->
  
     
 
-  </article>
+  </article>-->
 
   <article class="row block" ng-show="visibility=='interactView' && showReadWrite">
 
@@ -1949,13 +1949,13 @@
     </div>
 
     <div class="btn-group">
-      <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
+      <!--<a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
         {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}
         <i class="caret"></i>
-      </a>
-      <ul class="dropdown-menu" ng-show="dropdownContracts">
+      </a>-->
+      <ul class="" ng-show="dropdownContracts">
         <li ng-repeat="func in contract.functions track by $index">
-          <a ng-click="selectFunc($index)">
+          <a ng-init="selectFunc($index)">
             {{func.name}}
           </a>
         </li>
@@ -1970,8 +1970,7 @@
 
         <div class="item write-address" ng-switch-when="address">
           <label>
-            {{input.name}}
-            <small>{{input.type}}</small>
+            {{input.name}}<small>{{input.type}}</small>
           </label>
           <div class="row">
             <div class="col-xs-11">
@@ -2002,7 +2001,7 @@
                  ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'" />
         </p>
 
-        <p class="item write-string" ng-switch-when="string">
+        <!--<p class="item write-string" ng-switch-when="string">
           <label>
             {{input.name}} <small> {{input.type}} </small>
           </label>
@@ -2040,7 +2039,7 @@
                 False
             </label>
           </span>
-        </p>
+        </p>-->
         <p class="item" ng-switch-default>
           <label> {{input.name}} <small> {{input.type}} </small> </label>
           <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
@@ -2093,7 +2092,7 @@
           <input class="form-control" type="text" placeholder="0x151bc..." ng-model="output.value" readonly/>
         </p>
 
-        <!-- Boolean -->
+        <!-- Boolean--> 
         <p class="item write-boolean" ng-switch-when="bool">
           <label>
             &#8627; {{output.name}}

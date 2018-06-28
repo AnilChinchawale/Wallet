@@ -56,8 +56,8 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     id: 6,
     name: "NAV_Contracts",
     url: "contracts",
-    mew: false,
-    cx: false
+    mew: true,
+    cx: true
   },
   //made both mew: false cx: false
   ens: {

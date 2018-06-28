@@ -103,7 +103,7 @@ var decryptWalletCtrl        = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl           = require('./controllers/viewWalletCtrl');
 var txStatusCtrl              = require('./controllers/txStatusCtrl');
 var sendTxCtrl               = require('./controllers/sendTxCtrl');
-var swapCtrl                 = require('./controllers/swapCtrl');
+//var swapCtrl                 = require('./controllers/swapCtrl');
 var signMsgCtrl              = require('./controllers/signMsgCtrl');
 var contractsCtrl            = require('./controllers/contractsCtrl');
 var ensCtrl                  = require('./controllers/ensCtrl');
@@ -153,7 +153,7 @@ app.controller('tabsCtrl', ['$scope', 'globalService', '$translate', '$sce', tab
 app.controller('viewCtrl', ['$scope', 'globalService', '$sce', viewCtrl]);
 app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
-//app.controller('onboardingCtrl', ['$scope', onboardingCtrl]);
+app.controller('onboardingCtrl', ['$scope', onboardingCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('txStatusCtrl', ['$scope', txStatusCtrl]);

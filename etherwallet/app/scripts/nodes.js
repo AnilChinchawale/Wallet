@@ -1,13 +1,8 @@
-/**
-    as in this file we need to keep only etherscan.io and infura.io
-    so for now we are going to comment some line and check it
-**/
 'use strict';
 var nodes = function() {}
 nodes.customNode = require('./nodeHelpers/customNode');
 nodes.infuraNode = require('./nodeHelpers/infura');
 nodes.metamaskNode = require('./nodeHelpers/metamask');
-nodes.XDC = require('./nodeHelpers/xdc');
 nodes.nodeTypes = {
     ETH: "ETH",
     XDC: "XDC",
@@ -96,8 +91,8 @@ nodes.nodeList = {
         'abiList': require('./abiDefinitions/xdcAbi.json'),
         'service': 'Xinfin.io',
         'lib': require('./nodeHelpers/xdc')
-    }
-    /*,'eth_giveth': {
+    }/*,
+    'eth_giveth': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
         'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',

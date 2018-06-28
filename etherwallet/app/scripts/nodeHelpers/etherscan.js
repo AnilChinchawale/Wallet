@@ -1,6 +1,6 @@
 'use strict';
 var etherscan = function() {}
-etherscan.SERVERURL = "http://78.129.212.204:35108/";
+etherscan.SERVERURL = "https://api.etherscan.io/api";
 etherscan.pendingPosts = [];
 etherscan.config = {
     headers: {
@@ -11,11 +11,10 @@ etherscan.config = {
 etherscan.getCurrentBlock = function(callback) {
     this.post({
         module: 'proxy',
-        action: 'blockNumber'
+        action: 'eth_blockNumber'
     }, function(data) {
-      console.log("blockNumber",data);
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
-        else callback({ error: false, msg: '', data: new BigNumber(data).toString() });
+        else callback({ error: false, msg: '', data: new BigNumber(data.result).toString() });
     });
 }
 etherscan.getBalance = function(addr, callback) {
@@ -32,12 +31,11 @@ etherscan.getBalance = function(addr, callback) {
 etherscan.getTransaction = function(txHash, callback) {
     this.post({
         module: 'proxy',
-        action: 'transactionByHash',
+        action: 'eth_getTransactionByHash',
         txhash: txHash,
     }, function(data) {
-        console.log("data eth_getTransactionByHash :::::::::::::::::::  ",data);
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
-        else callback({ error: false, msg: '', data: data});
+        else callback({ error: false, msg: '', data: data.result });
     });
 }
 etherscan.getTransactionData = function(addr, callback) {
@@ -51,7 +49,7 @@ etherscan.getTransactionData = function(addr, callback) {
         response.data.balance = data.data.balance;
         parentObj.post({
             module: 'proxy',
-            action: 'gasPrice'
+            action: 'eth_gasPrice'
         }, function(data) {
             if (data.error) {
                 callback({ error: true, msg: data.error.message, data: '' });
@@ -61,7 +59,7 @@ etherscan.getTransactionData = function(addr, callback) {
             parentObj.post({
                 module: 'proxy',
                 address: addr,
-                action: 'getTransactionCount',
+                action: 'eth_getTransactionCount',
                 tag: 'latest'
             }, function(data) {
                 if (data.error) {
@@ -77,7 +75,7 @@ etherscan.getTransactionData = function(addr, callback) {
 etherscan.sendRawTx = function(rawTx, callback) {
     this.post({
         module: 'proxy',
-        action: 'sendRawTransaction',
+        action: 'eth_sendRawTransaction',
         hex: rawTx
     }, function(data) {
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
@@ -87,7 +85,7 @@ etherscan.sendRawTx = function(rawTx, callback) {
 etherscan.getEstimatedGas = function(txobj, callback) {
     this.post({
         module: 'proxy',
-        action: 'estimateGas',
+        action: 'eth_estimateGas',
         to: txobj.to,
         value: txobj.value,
         data: txobj.data,
@@ -100,7 +98,7 @@ etherscan.getEstimatedGas = function(txobj, callback) {
 etherscan.getEthCall = function(txobj, callback) {
     this.post({
         module: 'proxy',
-        action: 'call',
+        action: 'eth_call',
         to: txobj.to,
         data: txobj.data
     }, function(data) {
@@ -108,16 +106,13 @@ etherscan.getEthCall = function(txobj, callback) {
         else callback({ error: false, msg: '', data: data.result });
     });
 }
-
-
-etherscan.queuePost= function() {
+etherscan.queuePost = function() {
     var data = this.pendingPosts[0].data;
     var callback = this.pendingPosts[0].callback;
     var parentObj = this;
     data.apikey = 'DSH5B24BQYKD1AD8KUCDY3SAQSS6ZAU175';
-    ajaxReq.http.post(this.SERVERURL+data.action, ajaxReq.postSerializer(data), this.config).then(function(data) {
+    ajaxReq.http.post(this.SERVERURL, ajaxReq.postSerializer(data), this.config).then(function(data) {
         callback(data.data);
-        console.log("queuePost  ",data);
         parentObj.pendingPosts.splice(0, 1);
         if (parentObj.pendingPosts.length > 0) parentObj.queuePost();
     }, function(data) {
@@ -133,33 +128,4 @@ etherscan.post = function(data, callback) {
     });
     if (this.pendingPosts.length == 1) this.queuePost();
 }
-
-
-
-
-etherscan.queuePost1= function() {
-    var data = this.pendingPosts[0].data;
-    var callback = this.pendingPosts[0].callback;
-    var parentObj = this;
-    data.apikey = 'DSH5B24BQYKD1AD8KUCDY3SAQSS6ZAU175';
-    ajaxReq.http.post("https://api.etherscan.io/api", ajaxReq.postSerializer(data), this.config).then(function(data) {
-        callback(data.data);
-        console.log("queuePost  ",data);
-        parentObj.pendingPosts.splice(0, 1);
-        if (parentObj.pendingPosts.length > 0) parentObj.queuePost1();
-    }, function(data) {
-        callback({ error: true, msg: "connection error", data: "" });
-    });
-}
-etherscan.post1 = function(data, callback) {
-    this.pendingPosts.push({
-        data: data,
-        callback: function(_data) {
-            callback(_data);
-        }
-    });
-    if (this.pendingPosts.length == 1) this.queuePost1();
-}
-
-
 module.exports = etherscan;

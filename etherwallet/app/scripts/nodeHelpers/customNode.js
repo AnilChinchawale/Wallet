@@ -33,9 +33,8 @@ customNode.prototype.getBalance = function(addr, callback) {
         method: 'eth_getBalance',
         params: [addr, 'pending']
     }, function(data) {
-      console.log("I am being called data::", data);
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
-        else callback({ error: false, msg: '', data: { address: addr, balance: new BigNumber("0x6").toString() } });
+        else callback({ error: false, msg: '', data: { address: addr, balance: new BigNumber(data.result).toString() } });
     });
 }
 customNode.prototype.getTransaction = function(txHash, callback) {

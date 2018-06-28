@@ -36,7 +36,6 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: true,
     cx: true
   },
-  //made both mew: false cx: false
   swap: {
     id: 4,
     name: "NAV_Swap",
@@ -51,7 +50,6 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: true,
     cx: false
   },
-  //made comment to contract
   contracts: {
     id: 6,
     name: "NAV_Contracts",
@@ -59,7 +57,6 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: true,
     cx: true
   },
-  //made both mew: false cx: false
   ens: {
     id:7,
     name: "NAV_ENS",
@@ -67,7 +64,6 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: false,
     cx: false
   },
-  //made both mew: false cx: false
   domainsale: {
     id: 8,
     name: "NAV_DomainSale",

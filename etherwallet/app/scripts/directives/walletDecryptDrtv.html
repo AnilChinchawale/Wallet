@@ -541,7 +541,7 @@
           Your file is encrypted. Please enter the password:
         </p>
         <input class="form-control"
-               ng-change="onFilePassChange()"
+               ng-init="onFilePassChange()"
                ng-class="Validator.isPasswordLenValid($parent.$parent.filePassword,0) ? 'is-valid' : 'is-invalid'"
                ng-model="$parent.$parent.filePassword"
                placeholder="{{ 'x_Password' | translate }}"

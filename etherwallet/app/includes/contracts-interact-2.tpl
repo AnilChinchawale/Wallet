@@ -237,7 +237,7 @@
           <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="22px" height="22px" />  FALSE </span>
         </p>
 
-        <!--  -->
+
         <p class="item" ng-switch-default>
           <label>
             &#8627; {{output.name}}

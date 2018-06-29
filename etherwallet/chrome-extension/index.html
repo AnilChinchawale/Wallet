@@ -1861,6 +1861,221 @@
 
   </article>-->
 
+  
+
+  <article ng-show="visibility=='interactView'">
+
+     <article class="modal fade" id="sendContract" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
+
+        <div ng-show="wd">
+
+          <h2 class="modal-title text-danger" translate="SENDModal_Title">
+            Warning!
+          </h2>
+
+          <p translate="CONTRACT_Warning_3">
+            You are about to **execute a function on contract**.
+          </p>
+          <p>
+            <span translate="CONTRACT_Warning_2">
+              It will be deployed on the following network:
+            </span>
+            <strong>{{ajaxReq.type}}</strong> ({{ajaxReq.service}}).
+          </p>
+
+
+          <label>
+            <span translate="SEND_amount">
+              Amount
+            </span>
+            <em translate="SEND_Helper_Contract">
+              In most cases you should leave this as 0.
+            </em>
+          </label>
+          <input class="form-control"
+                 type="text"
+                 placeholder="0"
+                 ng-model="tx.value"
+                 ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+
+          <label translate="TRANS_gas">
+            Gas
+          </label>
+          <input class="form-control"
+                 type="text"
+                 placeholder="300000"
+                 ng-model="tx.gasLimit"
+                 ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+
+          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate">
+            Generate Transaction
+          </a>
+
+          <!-- Data -->
+          <section class="row" ng-show="showRaw">
+            <!-- Raw TX -->
+            <div class="form-group col-sm-6">
+              <h4 translate="SEND_raw">
+                Raw Transaction
+              </h4>
+              <textarea class="form-control" rows="3" readonly >{{rawTx}}</textarea>
+            </div>
+            <!-- Singed TX -->
+            <div class="form-group col-sm-6">
+              <h4 translate="SEND_signed">
+                Signed Transaction
+              </h4>
+              <textarea class="form-control" rows="3" readonly >{{signedTx}}</textarea>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+
+      <div class="modal-footer" ng-show="showRaw">
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+    </section>
+  </section>
+</article>
+
+ 
+    
+
+  </article>
+  <!-- / Interact Contracts -->
+
+
+
+  <!-- Deploy Contract -->
+  <article class="row block" ng-show="visibility=='deployView'">
+
+     <section class="col-xs-12">
+
+  <!-- Byte Code -->
+  <div class="form-group">
+    <h4 translate="CONTRACT_ByteCode">
+      Byte Code:
+    </h4>
+    <textarea
+      class="form-control"
+      rows="8"
+      ng-model="tx.data"
+      ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
+  </div>
+
+  <!-- Gas -->
+  <div class="form-group">
+    <h4 translate="TRANS_gas">Gas:</h4>
+    <input class="form-control"
+           type="text"
+           placeholder="300000"
+           ng-model="tx.gasLimit"
+           ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+  </div>
+
+  <!-- Sign TX Button (once wallet has been unlocked) -->
+  <div class="form-group">
+    <a class="btn btn-info btn-block" ng-click="generateTx()" ng-show="wd" translate="DEP_signtx">
+      Sign Transaction
+    </a>
+  </div>
+
+  <!-- TXs -->
+  <section class="row" ng-show="showRaw">
+    <!-- Raw TX -->
+    <div class="form-group col-sm-6">
+      <h4 translate="SEND_raw">
+        Raw Transaction
+      </h4>
+      <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
+    </div>
+    <!-- Singed TX -->
+    <div class="form-group col-sm-6">
+      <h4 translate="SEND_signed">
+        Signed Transaction
+      </h4>
+      <textarea class="form-control" rows="4" readonly>{{signedTx}}</textarea>
+    </div>
+  </section>
+
+  <!-- Deploy Contract Button (once tx has been signed) -->
+  <div class="form-group" ng-show="showRaw">
+    <a class="btn btn-primary btn-block"
+       data-toggle="modal"
+       data-target="#deployContract"
+       translate="NAV_DeployContract">
+          Deploy Contract
+    </a>
+  </div>
+
+   <article class="modal fade" id="deployContract" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close Deploy Contract Dialog">&times;</button>
+
+        <h2 class="modal-title text-danger" translate="SENDModal_Title">
+          Warning!
+        </h2>
+
+        <p translate="CONTRACT_Warning_1">
+          You are about to <strong>deploy a contract</strong>.
+        </p>
+        <p>
+          <span translate="CONTRACT_Warning_2">
+            It will be deployed on the following network:
+          </span>
+          <strong>{{ajaxReq.type}}</strong>.
+        </p>
+
+        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+
+        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" aria-label="Close Deploy Contract Dialog" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+    </section>
+  </section>
+</article>
+ 
+  
+
+</section>
+ 
+    
+
+  </article>
+  <!-- / Deploy Contract -->
+
+  <!--wallet decrypt-->
+  <article class="form-group"
+           ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
+      
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+  </article>
+
   <article class="row block" ng-show="visibility=='interactView' && showReadWrite">
 
      <!-- STEP READ/WRITE -->
@@ -2120,219 +2335,6 @@
  
     
 
-  </article>
-
-  <article ng-show="visibility=='interactView'">
-
-     <article class="modal fade" id="sendContract" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close Dialog">&times;</button>
-
-        <div ng-show="wd">
-
-          <h2 class="modal-title text-danger" translate="SENDModal_Title">
-            Warning!
-          </h2>
-
-          <p translate="CONTRACT_Warning_3">
-            You are about to **execute a function on contract**.
-          </p>
-          <p>
-            <span translate="CONTRACT_Warning_2">
-              It will be deployed on the following network:
-            </span>
-            <strong>{{ajaxReq.type}}</strong> ({{ajaxReq.service}}).
-          </p>
-
-
-          <label>
-            <span translate="SEND_amount">
-              Amount
-            </span>
-            <em translate="SEND_Helper_Contract">
-              In most cases you should leave this as 0.
-            </em>
-          </label>
-          <input class="form-control"
-                 type="text"
-                 placeholder="0"
-                 ng-model="tx.value"
-                 ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
-
-          <label translate="TRANS_gas">
-            Gas
-          </label>
-          <input class="form-control"
-                 type="text"
-                 placeholder="300000"
-                 ng-model="tx.gasLimit"
-                 ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
-
-          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate">
-            Generate Transaction
-          </a>
-
-          <!-- Data -->
-          <section class="row" ng-show="showRaw">
-            <!-- Raw TX -->
-            <div class="form-group col-sm-6">
-              <h4 translate="SEND_raw">
-                Raw Transaction
-              </h4>
-              <textarea class="form-control" rows="3" readonly >{{rawTx}}</textarea>
-            </div>
-            <!-- Singed TX -->
-            <div class="form-group col-sm-6">
-              <h4 translate="SEND_signed">
-                Signed Transaction
-              </h4>
-              <textarea class="form-control" rows="3" readonly >{{signedTx}}</textarea>
-            </div>
-          </section>
-
-        </div>
-      </div>
-
-
-      <div class="modal-footer" ng-show="showRaw">
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
-          No, get me out of here!
-        </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
-          Yes, I am sure! Make transaction.
-        </button>
-      </div>
-
-    </section>
-  </section>
-</article>
-
- 
-    
-
-  </article>
-  <!-- / Interact Contracts -->
-
-
-
-  <!-- Deploy Contract -->
-  <article class="row block" ng-show="visibility=='deployView'">
-
-     <section class="col-xs-12">
-
-  <!-- Byte Code -->
-  <div class="form-group">
-    <h4 translate="CONTRACT_ByteCode">
-      Byte Code:
-    </h4>
-    <textarea
-      class="form-control"
-      rows="8"
-      ng-model="tx.data"
-      ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
-  </div>
-
-  <!-- Gas -->
-  <div class="form-group">
-    <h4 translate="TRANS_gas">Gas:</h4>
-    <input class="form-control"
-           type="text"
-           placeholder="300000"
-           ng-model="tx.gasLimit"
-           ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
-  </div>
-
-  <!-- Sign TX Button (once wallet has been unlocked) -->
-  <div class="form-group">
-    <a class="btn btn-info btn-block" ng-click="generateTx()" ng-show="wd" translate="DEP_signtx">
-      Sign Transaction
-    </a>
-  </div>
-
-  <!-- TXs -->
-  <section class="row" ng-show="showRaw">
-    <!-- Raw TX -->
-    <div class="form-group col-sm-6">
-      <h4 translate="SEND_raw">
-        Raw Transaction
-      </h4>
-      <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
-    </div>
-    <!-- Singed TX -->
-    <div class="form-group col-sm-6">
-      <h4 translate="SEND_signed">
-        Signed Transaction
-      </h4>
-      <textarea class="form-control" rows="4" readonly>{{signedTx}}</textarea>
-    </div>
-  </section>
-
-  <!-- Deploy Contract Button (once tx has been signed) -->
-  <div class="form-group" ng-show="showRaw">
-    <a class="btn btn-primary btn-block"
-       data-toggle="modal"
-       data-target="#deployContract"
-       translate="NAV_DeployContract">
-          Deploy Contract
-    </a>
-  </div>
-
-   <article class="modal fade" id="deployContract" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close Deploy Contract Dialog">&times;</button>
-
-        <h2 class="modal-title text-danger" translate="SENDModal_Title">
-          Warning!
-        </h2>
-
-        <p translate="CONTRACT_Warning_1">
-          You are about to <strong>deploy a contract</strong>.
-        </p>
-        <p>
-          <span translate="CONTRACT_Warning_2">
-            It will be deployed on the following network:
-          </span>
-          <strong>{{ajaxReq.type}}</strong>.
-        </p>
-
-        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
-
-        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal" aria-label="Close Deploy Contract Dialog" translate="SENDModal_No">
-          No, get me out of here!
-        </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
-          Yes, I am sure! Make transaction.
-        </button>
-      </div>
-
-    </section>
-  </section>
-</article>
- 
-  
-
-</section>
- 
-    
-
-  </article>
-  <!-- / Deploy Contract -->
-
-  <!--wallet decrypt-->
-  <article class="form-group"
-           ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
-      
-        <wallet-decrypt-drtv></wallet-decrypt-drtv>         
   </article>
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">

@@ -585,6 +585,8 @@ var contractsCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(error);
     }
     $scope.scanLedger = function() {
+        $scope.showReadWrite=true;
+        $scope.btnShowReadWrite=true;
         $scope.ledgerError = false;
         $scope.ledger = new Ledger3("w0w");
         var app = new ledgerEth($scope.ledger);
@@ -592,12 +594,16 @@ var contractsCtrl = function($scope, $sce, walletService) {
         app.getAddress(path, $scope.ledgerCallback, false, true);
     };
     $scope.scanDigitalBitbox = function() {
+        $scope.showReadWrite=true;
+        $scope.btnShowReadWrite=true;
         $scope.digitalBitbox = new DigitalBitboxUsb();
         var app = new DigitalBitboxEth($scope.digitalBitbox, $scope.HDWallet.digitalBitboxSecret);
         var path = $scope.HDWallet.dPath;
         app.getAddress(path, $scope.digitalBitboxCallback);
     };
     $scope.scanSecalot = function() {
+        $scope.showReadWrite=true;
+        $scope.btnShowReadWrite=true;
         $scope.secalot = new SecalotUsb();
         if (typeof $scope.HDWallet.secalotSecret == "undefined") {
             $scope.HDWallet.secalotSecret = "";
@@ -607,6 +613,8 @@ var contractsCtrl = function($scope, $sce, walletService) {
         app.getAddress(path, $scope.secalotCallback);
     };
     $scope.scanTrezor = function() {
+        $scope.showReadWrite=true;
+        $scope.btnShowReadWrite=true;
         // trezor is using the path without change level id
         var path = $scope.getTrezorPath();
 
@@ -621,6 +629,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
     };
     $scope.scanMetamask = function() {
         $scope.showReadWrite=true;
+        $scope.btnShowReadWrite=true;
         window.web3.eth.getAccounts(function (err, accounts) {
           if (err) $scope.notifier.danger(err + '. Are you sure you are on a secure (SSL / HTTPS) connection?')
           if (!accounts.length) {

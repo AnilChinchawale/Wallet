@@ -1,7 +1,7 @@
 <section class="pre-footer">
   <div class="container" id="particles-js">
     <p>
-      MyEtherWallet.com does not hold your keys for you. We cannot access accounts, recover keys, reset passwords, nor reverse transactions. Protect your keys &amp; always check that you are on correct URL.
+      XDCEwallet.com does not hold your keys for you. We cannot access accounts, recover keys, reset passwords, nor reverse transactions. Protect your keys &amp; always check that you are on correct URL.
       <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal">
         You are responsible for your security.
       </a>
@@ -15,11 +15,11 @@
 
     <section class="footer--left">
 
-      <a href="/"><img src="images/logo-myetherwallet.svg" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+      <a href="/"><img src="images/xdc_transparent.png" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
       <p>
         <span translate="FOOTER_1">
-          Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( myetherwallet.com ) before unlocking your wallet.
+          Free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( xdcewallet.com ) before unlocking your wallet.
         </span>
       </p>
 
@@ -40,7 +40,7 @@
       </p>
 
       <p>
-        &copy; 2018 MyEtherWallet, Inc
+        &copy; 2018 XDCEWallet, Inc
       </p>
 
     </section>
@@ -98,12 +98,12 @@
     <section class="footer--righ">
       <p>
         <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-          MyEtherWallet.com
+          XDCEWallet.com
         </a>
       </p>
       <p>
         <a aria-label="myetherwallet team" href="https://team.myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-          MyEtherWallet Team
+          XDCEWallet.com Team
         </a>
       </p>
       <p>
@@ -143,7 +143,7 @@
 
       <p>
         <a aria-label="my ether wallet chrome extension" href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-          MyEtherWallet Chrome Extension
+          XDCEWALLET Chrome Extension
         </a>
       </p>
 

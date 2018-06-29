@@ -12,7 +12,7 @@
         <article class="onboarding__modal" ng-show="showOnboardSlide==1">
           <h3 class="onboarding__title">
             <span translate="ONBOARD_welcome_title">
-              Welcome to MyEtherWallet.com
+              Welcome to XDCEWallet.com
             </span>
             <br />
             <small translate="ONBOARD_welcome_content__3">

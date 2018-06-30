@@ -10,7 +10,13 @@ router.post('/', cors(), function(req, res) {
 	
 	var receipt = web3.eth.getTransactionCount(req.body.address);
 	    console.log("receipt  ",receipt);
-    res.status(200).json(receipt);
+
+		var balance =""+receipt;
+		let temp = parseInt(balance);
+		let hex = temp.toString(16);
+
+
+    res.status(200).json({"jsonrpc":"2.0","id":req.body.id,"result":"0x"+hex});
 });
 
 

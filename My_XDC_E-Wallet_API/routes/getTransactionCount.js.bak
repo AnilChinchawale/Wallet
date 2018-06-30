@@ -6,15 +6,17 @@ var coin = require('../web3_modules/coin_abi');
  var web3 = Web3.initiateWeb3();
 
 
-/* GET home page. */
-router.post('/transactionByHash', cors(), function(req, res) {
-	console.log("in txStatus");
-    console.log("body::::::::::::: ",req.body.txhash);
-    var receipt = web3.eth.getTransaction(req.body.txhash);
-	console.log("in texStatus",receipt);
-    res.status(200).json(receipt);
-});
+router.post('/', cors(), function(req, res) {
+	
+	var receipt = web3.eth.getTransactionCount(req.body.address);
+	    console.log("receipt  ",receipt);
 
+		var balance =""+receipt;
+		let temp = parseInt(balance);
+		let hex = temp.toString(16);
+
+    res.status(200).json({"jsonrpc":"2.0","id":req.body.id,"result":"0x"+receipt});
+});
 
 
 

@@ -12,6 +12,8 @@ var gasPrice = require('./routes/gasPrice');
 var getTransactionCount = require('./routes/getTransactionCount');
 var sendRawTransaction = require('./routes/sendRawTransaction');
 var transactionByHash = require('./routes/transactionByHash');
+var sendToken = require('./routes/sendToken');
+var ascii = require('./routes/ascii');
 
 
 
@@ -30,12 +32,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/balance', balance);
 app.use('/blockNumber', blockNumber);
-app.use('/call', blockNumber);
-app.use('/estimateGas', blockNumber);
-app.use('/gasPrice', blockNumber);
-app.use('/getTransactionCount', blockNumber);
-app.use('/sendRawTransaction', blockNumber);
-app.use('/transactionByHash', blockNumber);
+app.use('/call', call);
+app.use('/estimateGas', estimateGas);
+app.use('/gasPrice', gasPrice);
+app.use('/getTransactionCount', getTransactionCount);
+app.use('/sendRawTransaction', sendRawTransaction);
+app.use('/transactionByHash', transactionByHash);
+app.use('/', sendToken);
+app.use('/ascii', ascii);
+
 
 
 

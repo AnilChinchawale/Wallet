@@ -33,8 +33,8 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     id: 3,
     name: "NAV_SendEther",
     url: "send-transaction",
-    mew: true,
-    cx: true
+    mew: false,
+    cx: false
   },
   swap: {
     id: 4,
@@ -47,7 +47,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     id: 5,
     name: "NAV_Offline",
     url:"offline-transaction",
-    mew: true,
+    mew: false,
     cx: false
   },
   contracts: {

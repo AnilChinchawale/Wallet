@@ -74,7 +74,7 @@
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
-
+<!-- red bar at top.
 @@if (site === 'mew' ) {
   <div class="small announcement annoucement-danger">
     <div class="container">
@@ -91,7 +91,7 @@
       </span>
     </div>
   </div>
-}
+}-->
 
 <section class="bg-gradient header-branding">
   <section class="container">

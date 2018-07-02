@@ -15,7 +15,7 @@
 
     <section class="footer--left">
 
-      <a href="/"><img src="images/xdc_transparent.png" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+      <a href="/"><img src="images/xinfinewallet_transparent.png" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
       <p>
         <span translate="FOOTER_1">

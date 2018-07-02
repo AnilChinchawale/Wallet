@@ -3,10 +3,10 @@
 
   <!-- Contract Info CONTRACT_Interact_CTA -->
   <span class="form-group">
-    <h4 translate="CONTRACT_Interact_Title">
+    <h4 translate="CONTRACT_Interact_Title" hidden="hidden">
       Read / Write Contract
     </h4>
-    <h5> {{ contract.address }} </h5>
+    <h5 hidden="hidden"> {{ contract.address }} </h5>
 
     <div class="form-group well"
          ng-show="contract.address=='0x0101010101010101010101010101010101010101' || contract.address=='0x1010101010101010101010101010101010101010'">
@@ -102,10 +102,11 @@
   <span class="form-group" ng-show="contract.selectedFunc!=null">
     <div ng-repeat="input in contract.functions[contract.selectedFunc.index].inputs track by $index">
       <div ng-switch on="input.type">
-
+      
         <div class="item write-address" ng-switch-when="address">
-          <label>
-            {{input.name}}<small>{{input.type}}</small>
+          <h4>To Address</h4>
+          <label hidden="hidden">
+            {{input.name}} {{input.type}}
           </label>
           <div class="row">
             <div class="col-xs-11">
@@ -123,11 +124,13 @@
               </div>
             </div>
           </div>
+          <h4>Amount to Send</h4>
         </div>
-
+        
         <p class="item write-unit256" ng-switch-when="uint256">
-          <label>
-            {{input.name}} <small> {{input.type}} </small>
+          
+          <label hidden="hidden">
+            {{input.name}}  {{input.type}} 
           </label>
           <input class="form-control"
                  type="text"
@@ -179,7 +182,7 @@
           <label> {{input.name}} <small> {{input.type}} </small> </label>
           <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
         </p>
-
+        
       </div>
     </div>
   </span>

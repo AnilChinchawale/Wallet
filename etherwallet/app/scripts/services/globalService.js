@@ -50,10 +50,10 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     mew: false,
     cx: false
   },
-  contracts: {
+  sendToken: {
     id: 6,
-    name: "NAV_Contracts",
-    url: "contracts",
+    name: "Send Token",
+    url: "send-token",
     mew: true,
     cx: true
   },

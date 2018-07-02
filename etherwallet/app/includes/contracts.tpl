@@ -1,19 +1,19 @@
-<main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak ng-init="initContract()">
+<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendToken.id" ng-controller='contractsCtrl' ng-cloak ng-init="initContract()">
 
   <!-- Title -->
   <div class="block text-center" >
     <h1>
-      <a translate="NAV_InteractContract"
+      <a 
          ng-class="{'isActive': visibility=='interactView'}"
          ng-click="setVisibility('interactView')">
-          Interact with Contract
+          Send Token
       </a>
-      or
+      <!--or
       <a translate="NAV_DeployContract"
          ng-class="{'isActive': visibility=='deployView'}"
          ng-click="setVisibility('deployView')">
           Deploy Contract
-      </a>
+      </a>-->
     </h1>
   </div>
  
@@ -60,7 +60,7 @@
     <button class="btn btn-primary btn-block"
             ng-click="generateContractTx()"
             ng-show="!contract.functions[contract.selectedFunc.index].constant">
-      <span translate="CONTRACT_Write"> WRITE </span>
+      <span > Generate Transaction </span>
     </button>
 
     </br>

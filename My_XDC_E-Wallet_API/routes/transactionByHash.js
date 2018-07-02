@@ -9,10 +9,10 @@ var coin = require('../web3_modules/coin_abi');
 
 router.post('/', cors(), function(req, res) {
 	console.log("in txStatus");
-    console.log("body::::::::::::: ",req.body.txhash);
+    console.log("body::::::::::::: ",req.body);
     var receipt = web3.eth.getTransaction(req.body.txhash);
-	console.log("in texStatus",receipt);
-    res.status(200).json(receipt);
+	console.log("in txStatus{",receipt);
+    res.status(200).json({"result":receipt});
 });
 
 

@@ -11,7 +11,7 @@ router.post('/', cors(), function(req, res) {
     var receipt =  web3.eth.blockNumber;
     console.log("receipt  ",receipt);
 
-    res.status(200).json(receipt);
+    res.status(200).json({"result":receipt});
 });
 
 module.exports = router;

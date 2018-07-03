@@ -151,11 +151,11 @@ uiFuncs.generateTx = function(txData, callback) {
     try {
         uiFuncs.isTxDataValid(txData);
         var genTxWithInfo = function(data) {
-            // console.log("genTxWithInfo", data); // todo remove dev item
+             console.log("genTxWithInfo", data); // todo remove dev item
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
-                gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
-                gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
+                gasPrice:0,//data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
+                gasLimit:2000000, //ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
                 to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
                 data: ethFuncs.sanitizeHex(txData.data)
@@ -199,7 +199,7 @@ uiFuncs.generateTx = function(txData, callback) {
                 // wait for the confirmation dialogue / sendTx method
                 var txParams = Object.assign({
                     from: txData.from,
-                    gas: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)) // MetaMask and Web3 v1.0 use 'gas' not 'gasLimit'
+                    gas:2000000 //ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)) // MetaMask and Web3 v1.0 use 'gas' not 'gasLimit'
                 }, rawTx)
                 rawTx.rawTx = JSON.stringify(rawTx);
                 rawTx.signedTx = JSON.stringify(txParams);
@@ -220,7 +220,7 @@ uiFuncs.generateTx = function(txData, callback) {
         if (txData.nonce || txData.gasPrice) {
             var data = {
                 nonce: txData.nonce,
-                gasprice: txData.gasPrice
+                gasprice:txData.gasPrice
             }
             data.isOffline = txData.isOffline ? txData.isOffline : false;
             genTxWithInfo(data);

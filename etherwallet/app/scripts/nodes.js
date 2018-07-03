@@ -58,11 +58,11 @@ nodes.nodeList = {
     },*/
     'eth_ethscan': {
         'name': 'ETH',
-        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'blockExplorerTX': 'http://xinfin.info/account/[[txHash]]',
+        'blockExplorerAddr': 'http://xinfin.info/account/[[address]]',
         'type': nodes.nodeTypes.ETH,
         'eip155': true,
-        'chainId': 9821720740,
+        'chainId': '*',
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
         'service': 'etherscan.io',

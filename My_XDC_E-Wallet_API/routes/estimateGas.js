@@ -17,7 +17,7 @@ router.post('/', cors(), function(req, res) {
 		let temp = parseInt(balance);
 		let hex = temp.toString(16);
 
-    res.status(200).json({"jsonrpc":"2.0","id":req.body.id,"result":"0x"+hex});
+    res.status(200).json({"jsonrpc":"2.0","id":req.body.id,"result":"0x"+hex});//+hex
 	
 
 });

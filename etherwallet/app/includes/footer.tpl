@@ -15,7 +15,7 @@
 
     <section class="footer--left">
 
-      <a href="/"><img src="images/xdc_transparent.png" height="45px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
+      <a href="/"><img src="images/xinfinewallet_transparent.png" height="45px" width="auto" alt="XinFin Wallet" class="footer--logo"/></a>
 
       <p>
         <span translate="FOOTER_1">
@@ -40,7 +40,7 @@
       </p>
 
       <p>
-        &copy; 2018 XDCEWallet, Inc
+        &copy; 2018 XinFinEWallet, Inc
       </p>
 
     </section>
@@ -98,17 +98,17 @@
     <section class="footer--righ">
       <p>
         <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-          XDCEWallet.com
+          XinFinEWallet.org
         </a>
       </p>
       <p>
         <a aria-label="myetherwallet team" href="https://team.myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-          XDCEWallet.com Team
+          XinFinEWallet.org Team
         </a>
       </p>
       <p>
         <a aria-label="support email" href="mailto:support@myetherwallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
-          Email support: support@myetherwallet.com
+          Email support: support@XinFinEWallet.org
         </a>
       </p>
       <p>

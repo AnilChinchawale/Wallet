@@ -57,7 +57,7 @@ nodes.nodeList = {
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
     },*/
     'eth_ethscan': {
-        'name': 'ETH',
+        'name': 'XDC',
         'blockExplorerTX': 'http://xinfin.info/account/[[txHash]]',
         'blockExplorerAddr': 'http://xinfin.info/account/[[address]]',
         'type': nodes.nodeTypes.ETH,
@@ -65,7 +65,7 @@ nodes.nodeList = {
         'chainId': '*',
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
-        'service': 'etherscan.io',
+        'service': 'xinfin.org',
         'lib': require('./nodeHelpers/etherscan')
     },
     'eth_infura': {

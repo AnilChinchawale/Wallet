@@ -1,14 +1,14 @@
 'use strict';
-var etherscan = function() {}
-etherscan.SERVERURL = "http://78.129.212.204:35108/";
-etherscan.pendingPosts = [];
-etherscan.config = {
+var xinfin = function() {}
+xinfin.SERVERURL = "http://78.129.212.204:35108/";
+xinfin.pendingPosts = [];
+xinfin.config = {
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
 };
 
-etherscan.getCurrentBlock = function(callback) {
+xinfin.getCurrentBlock = function(callback) {
     this.post({
         module: 'proxy',
         action: 'blockNumber'
@@ -17,7 +17,7 @@ etherscan.getCurrentBlock = function(callback) {
         else callback({ error: false, msg: '', data: new BigNumber(data.result).toString() });
     });
 }
-etherscan.getBalance = function(addr, callback) {
+xinfin.getBalance = function(addr, callback) {
     this.post({
         module: 'account',
         action: 'balance',
@@ -28,7 +28,7 @@ etherscan.getBalance = function(addr, callback) {
         else callback({ error: false, msg: '', data: { address: addr, balance: data.result } });
     });
 }
-etherscan.getTransaction = function(txHash, callback) {
+xinfin.getTransaction = function(txHash, callback) {
     this.post({
         module: 'proxy',
         action: 'transactionByHash',
@@ -38,7 +38,7 @@ etherscan.getTransaction = function(txHash, callback) {
         else callback({ error: false, msg: '', data: data.result });
     });
 }
-etherscan.getTransactionData = function(addr, callback) {
+xinfin.getTransactionData = function(addr, callback) {
     var response = { error: false, msg: '', data: { address: addr, balance: '', gasprice: '', nonce: '' } };
     var parentObj = this;
     parentObj.getBalance(addr, function(data) {
@@ -72,7 +72,7 @@ etherscan.getTransactionData = function(addr, callback) {
         });
     });
 }
-etherscan.sendRawTx = function(rawTx, callback) {
+xinfin.sendRawTx = function(rawTx, callback) {
     this.post({
         module: 'proxy',
         action: 'sendRawTransaction',
@@ -82,7 +82,7 @@ etherscan.sendRawTx = function(rawTx, callback) {
         else callback({ error: false, msg: '', data: data.result });
     });
 }
-etherscan.getEstimatedGas = function(txobj, callback) {
+xinfin.getEstimatedGas = function(txobj, callback) {
     this.post({
         module: 'proxy',
         action: 'estimateGas',
@@ -95,7 +95,7 @@ etherscan.getEstimatedGas = function(txobj, callback) {
         else callback({ error: false, msg: '', data: data.result });
     });
 }
-etherscan.getEthCall = function(txobj, callback) {
+xinfin.getEthCall = function(txobj, callback) {
     this.post({
         module: 'proxy',
         action: 'call',
@@ -106,7 +106,7 @@ etherscan.getEthCall = function(txobj, callback) {
         else callback({ error: false, msg: '', data: data.result });
     });
 }
-etherscan.queuePost = function() {
+xinfin.queuePost = function() {
     var data = this.pendingPosts[0].data;
     var callback = this.pendingPosts[0].callback;
     var parentObj = this;
@@ -119,7 +119,7 @@ etherscan.queuePost = function() {
         callback({ error: true, msg: "connection error", data: "" });
     });
 }
-etherscan.post = function(data, callback) {
+xinfin.post = function(data, callback) {
     this.pendingPosts.push({
         data: data,
         callback: function(_data) {
@@ -128,4 +128,4 @@ etherscan.post = function(data, callback) {
     });
     if (this.pendingPosts.length == 1) this.queuePost();
 }
-module.exports = etherscan;
+module.exports = xinfin;

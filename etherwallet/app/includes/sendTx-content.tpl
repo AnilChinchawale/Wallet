@@ -83,8 +83,8 @@
           <div class="input-group-btn">
 
             <a style="min-width: 170px"
-               class="btn btn-default dropdown-toggle"
-               class="dropdown-toggle"
+               class="btn btn-default"
+               
                ng-click="dropdownAmount = !dropdownAmount"
                ng-class="dropdownEnabled ? '' : 'disabled'">
                 <strong>

@@ -58,14 +58,14 @@ nodes.nodeList = {
     },*/
     'eth_ethscan': {
         'name': 'XDC',
-        'blockExplorerTX': 'http://xinfin.info/account/[[txHash]]',
+        'blockExplorerTX': 'http://xinfin.info/',
         'blockExplorerAddr': 'http://xinfin.info/account/[[address]]',
-        'type': nodes.nodeTypes.ETH,
+        'type': nodes.nodeTypes.XDC,
         'eip155': true,
         'chainId': '*',
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
-        'service': 'xinfin.org',
+        'service': 'xinfin network',
         'lib': require('./nodeHelpers/etherscan')
     },
     'eth_infura': {

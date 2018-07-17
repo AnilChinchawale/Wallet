@@ -29,14 +29,14 @@
     <h5 translate="sidebar_AccountBal">Account Balance</h5>
     <ul class="account-info point">
       <li>
-        <span class="mono wrap">{{wallet.balance}}</span> {{ajaxReq.type}}
+        <span class="mono wrap">{{wallet.balance}}</span> {{wallet.name}}
       </li>
     </ul>
     <h5 translate="sidebar_TransHistory"> Transaction History</h5>
     <ul class="account-info">
       <li ng-show="ajaxReq.type != 'CUS'">
         <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener noreferrer">
-          {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
+          {{wallet.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
         </a>
       </li>
       <li ng-show="ajaxReq.type == 'ETH'">
@@ -108,16 +108,15 @@
     </div>
   </a>
   -->
-
+ <!--
   <div class="swap__nav" ng-show="ajaxReq.type=='ETH'">
     <a ng-click="slide=1"> &bull; </a>
     <a ng-click="slide=2"> &bull; </a>
-  </div>
+  </div> -->
 
 
 
-
-  <!-- Token Balances -->
+  <!-- Token Balances 
   <div class="block token-balances">
     <h5 translate="sidebar_TokenBal">Token Balances</h5>
 
@@ -130,7 +129,7 @@
     </a>
      -->
 
-    <!-- you can your Balance on Blockchain Explorer -->
+    <!-- you can your Balance on Blockchain Explorer
 
 
     <h5 class="u__protip">
@@ -156,9 +155,9 @@
              ethplorer.io
         </a>
       </span>
-    </p>
+    </p>  -->
 
-    <!-- Buttons -->
+    <!-- Buttons 
     <a class="btn btn-warning btn-xs" ng-click="showAllTokens=true" ng-show="showAllTokens==false">
       Show All Tokens
     </a>
@@ -169,9 +168,9 @@
       <span translate="SEND_custom">Add Custom Token</span>
     </a>
 
-    <br ng-show="customTokenField" />
+    <br ng-show="customTokenField" /> -->
 
-    <!-- Add Custom Token -->
+    <!-- Add Custom Token 
     <div class="custom-token-fields" ng-show="customTokenField">
       <div class="row">
         <address-field
@@ -197,9 +196,9 @@
     </div>
 
     <br />
-    <br />
+    <br /> -->
 
-    <!-- Balances -->
+    <!-- Balances 
     <table class="account-info">
       <tr ng-class="token.type!=='default' ? 'custom-token' : ''"
           ng-repeat="token in wallet.tokenObjs track by $index"
@@ -220,7 +219,7 @@
       </tr>
     </table>
 
-  </div>
+  </div> -->
 
 
 

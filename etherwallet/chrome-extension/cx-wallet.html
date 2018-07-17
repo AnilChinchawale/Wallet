@@ -350,12 +350,12 @@
                 <div class="balance-block">
                   <h3 class="block-title">Balance</h3>
                   <p class="balance-amount" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)">
-                    {{twallet.balance|number}} ETH
+                    {{twallet.balance|number}} XDC
                   </p>
                   <p class="balance-amount"
                       ng-show="showLongBal"
                       ng-dblclick="showLongBal=!showLongBal">
-                        {{twallet.balance }} ETH
+                        {{twallet.balance }} XDC
                   </p>
                 </div>
 
@@ -1468,7 +1468,7 @@
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
       <h1 translate="NAV_SendEther">
-        Send Ether &amp; Tokens
+        Send Tokens
       </h1>
     </div>
     <div ng-show="!wd">
@@ -1566,8 +1566,8 @@
           <div class="input-group-btn">
 
             <a style="min-width: 170px"
-               class="btn btn-default dropdown-toggle"
-               class="dropdown-toggle"
+               class="btn btn-default"
+               
                ng-click="dropdownAmount = !dropdownAmount"
                ng-class="dropdownEnabled ? '' : 'disabled'">
                 <strong>
@@ -1837,8 +1837,7 @@
   </div>
 
 </section>
-<!-- / Sidebar -->
- 
+<!-- / Sidebar --> 
 
     
      <article class="modal fade" id="sendTransaction" tabindex="-1">
@@ -1933,7 +1932,7 @@
               <td class="small text-right">Network:</td>
               <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
             </tr>
-            <tr>
+        <!--<tr>
               <td class="small text-right">Gas Limit:</td>
               <td class="small text-left mono">{{parsedSignedTx.gasLimit}}</td>
             </tr>
@@ -1953,7 +1952,7 @@
             <tr>
               <td class="small text-right">Data:</td>
               <td class="small text-left mono text-width-limit"><p>{{parsedSignedTx.data}}</p></td>
-            </tr>
+            </tr>-->
 
           </tbody>
         </table>
@@ -2324,8 +2323,8 @@
           <div class="input-group-btn">
 
             <a style="min-width: 170px"
-               class="btn btn-default dropdown-toggle"
-               class="dropdown-toggle"
+               class="btn btn-default"
+               
                ng-click="dropdownAmount = !dropdownAmount"
                ng-class="dropdownEnabled ? '' : 'disabled'">
                 <strong>
@@ -2595,8 +2594,7 @@
   </div>
 
 </section>
-<!-- / Sidebar -->
- 
+<!-- / Sidebar --> 
 
       
        <article class="modal fade" id="sendTransaction" tabindex="-1">
@@ -2691,7 +2689,7 @@
               <td class="small text-right">Network:</td>
               <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
             </tr>
-            <tr>
+        <!--<tr>
               <td class="small text-right">Gas Limit:</td>
               <td class="small text-left mono">{{parsedSignedTx.gasLimit}}</td>
             </tr>
@@ -2711,7 +2709,7 @@
             <tr>
               <td class="small text-right">Data:</td>
               <td class="small text-left mono text-width-limit"><p>{{parsedSignedTx.data}}</p></td>
-            </tr>
+            </tr>-->
 
           </tbody>
         </table>

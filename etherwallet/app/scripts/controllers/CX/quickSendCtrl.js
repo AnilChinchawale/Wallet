@@ -4,16 +4,38 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 	$scope.allWallets = [];
 	$scope.selectedWallet = "";
 	$scope.showConfirm = false;
-	$scope.tx = {
-		gasLimit: globalFuncs.defaultTxGasLimit,
-		data: "",
-		to: "",
-		unit: "ether",
-		value: "",
-		nonce: null,
-		gasPrice: null,
-		donate: false
+	
+    $scope.tx = {
+        gasLimit: 2000000,
+        data:'',
+        to: '',
+        unit: "ether",
+        value: 0,
+        nonce: null,
+        gasPrice: null
+    }
+
+    $scope.tx1 = {
+        to:"",
+        value:""
 	}
+	
+
+	$scope.$watch('tx1', function(newValue, oldValue) {
+		if(oldValue.to != newValue.to)
+		oldValue.to = newValue.to; 
+		else(oldValue.value != newValue.value)
+		oldValue.value = newValue.value; 
+		$scope.tx.data = $scope.getTxData();
+    	console.log("tx.data",$scope.tx.data,"new old ",newValue,oldValue);
+
+    }, true);
+    $scope.contract = {
+        address:ajaxReq.abiList[1].address,
+        abi:JSON.parse(ajaxReq.abiList[1].abi),
+        functions: [],
+        selectedFunc: null
+    }
 	$scope.setAllWallets = function() {
 		cxFuncs.getWalletsArr(function(wlts) {
 			$scope.allWallets = wlts;
@@ -36,9 +58,9 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 		});
 	};
 	$scope.validateAddress = function() {
-		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
+		if (ethFuncs.validateEtherAddress($scope.tx1.to)) {
 			for(let i = 0; i < Darklist.length; i++) {
-				if($scope.tx.to.length > 0 && $scope.tx.to.toLowerCase() === Darklist[i].address.toLowerCase()) {
+				if($scope.tx1.to.length > 0 && $scope.tx1.to.toLowerCase() === Darklist[i].address.toLowerCase()) {
 					$scope.validateAddressStatus = Darklist[i].comment !== ""? $sce.trustAsHtml(globalFuncs.getDangerText(`${globalFuncs.phishingWarning[0] + Darklist[i].comment}`)) : $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.phishingWarning[1]));
 					return;
 				} else {
@@ -62,20 +84,67 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 				$scope.validateTxStatus = $sce.trustAsHtml(resp.error);
 			}
 		});
-	}
-	$scope.prepTX = function() {
-		try {
-			if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
-			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[0];
+    }
+	
+	$scope.getTxData = function() {
+        //var abis = [{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+        var curFunc = $scope.contract.abi[0];
+        console.log("curFunc in tx",curFunc);
+        var fullFuncName = ethUtil.solidityUtils.transformToFullName(curFunc);
+        console.log("fullFuncName in tx",fullFuncName);
+        var funcSig = ethFuncs.getFunctionSignature(fullFuncName);
+        console.log("funcSig in tx",funcSig);
+        var typeName = ethUtil.solidityUtils.extractTypeName(fullFuncName);
+        console.log("typeName in tx",typeName);
+        var types = typeName.split(',');
+        console.log("types 1 in tx",types);
+        types = types[0] == "" ? [] : types;
+        console.log("types 2 in tx",types);
+        var values = [$scope.tx1.to,$scope.tx1.value*10000];
+        console.log("values in tx",values,"types",types);
+        return '0x' + funcSig + ethUtil.solidityCoder.encodeParams(types, values);
+    }
+
+	$scope.generateTx = function() {
+        try {
+            console.log($scope.wallet);
 			$scope.showConfirm = true;
-		} catch (e) {
+            if ($scope.wallet == null) throw globalFuncs.errorMsgs[3];
+            else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];
+			else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
+			$scope.tx.data = $scope.getTxData();
+			console.log("tx.data",$scope.tx.data);
+			$scope.tx.data = ethFuncs.sanitizeHex($scope.tx.data);
+            ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+                if (data.error) $scope.notifier.danger(data.msg);
+                data = data.data;
+                $scope.tx.to ="0xa1ff1153f68d8f0a8377f2002d59b34034fcf719";
+                $scope.tx.contractAddr ='0xa1ff1153f68d8f0a8377f2002d59b34034fcf719';
+				var txData = uiFuncs.getTxData($scope);
+				console.log($scope);
+                uiFuncs.generateTx(txData, function(rawTx) {
+                    if (!rawTx.isError) {
+                        $scope.rawTx = rawTx.rawTx;
+                        $scope.signedTx = rawTx.signedTx;
+
+                        $scope.showRaw = true;
+                    } else {
+                        $scope.showRaw = false;
+                        $scope.notifier.danger(rawTx.error);
+                    }
+                    if (!$scope.$$phase) $scope.$apply();
+                });
+            });
+        } catch (e) {
+			$scope.notifier.danger(e);
 			$scope.prepTXStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
-	}
+        }
+    }
 	$scope.unlockAndSend = function() {
 		try {
 			$scope.decryptWallet();
 			var txData = uiFuncs.getTxData($scope);
+			console.log("txdata",txData,"scope",$scope.tx);
 			uiFuncs.generateTx(txData, function(rawTx) {
 				if (!rawTx.isError) {
 					uiFuncs.sendTx(rawTx.signedTx, function(resp) {
@@ -94,19 +163,22 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 		} catch (e) {
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
 		}
-	}
+    }
+    $scope.setVisibility = function(str) {
+        $scope.visibility = str;
+    }
 
+   
 	$scope.decryptWallet = function() {
 		$scope.wallet = null;
 		$scope.validateTxStatus = "";
 		$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.allWallets[$scope.selectedWallet].priv, $scope.password);
 	};
-  $scope.selectedWallet = "";
-  $scope.password = "";
-  $scope.$parent.selectedWallet ="";
-  $scope.tx.to = "";
-  $scope.tx.value = "";
 
+   // $scope.tx.data = $scope.getTxData();
+    //console.log("tx.data",$scope.tx.data);
+    console.log("$scope.tx",$scope.tx);
+    $scope.tx.to = $scope.contract.address;
 	$scope.setAllWallets();
 };
 module.exports = quickSendCtrl;

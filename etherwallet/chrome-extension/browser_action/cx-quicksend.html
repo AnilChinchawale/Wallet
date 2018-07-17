@@ -47,7 +47,7 @@
       <div ng-show="selectedWallet!='' && !showConfirm">
         <div class="form-group">
           <label class="strong" translate="SEND_addr"> To Address: </label>
-          <input class="form-control" type="text" placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" ng-model="tx.to" ng-change="validateAddress()" />
+          <input class="form-control" type="text" placeholder="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D" ng-model="tx1.to" ng-change="validateAddress()" />
           <div ng-bind-html="validateAddressStatus"></div>
         </div>
         <div class="form-group">
@@ -55,17 +55,10 @@
             <strong translate="SEND_amount">Amount to Send: </strong>
             <small><a id="transferAllBalancePop" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a></small>
           </label>
-          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" />
-          <div class="radio">
-            <label>
-              <input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit" />Ether</label>
-            <label>
-              <input type="radio" name="currencyRadio" value="finney" ng-model="tx.unit" />Finney</label>
-            <label>
-              <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit" />Szabo</label>
-          </div>
+          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx1.value" />
+          
         </div>
-        <div class="text-center"><a class="btn btn-primary btn-block" ng-click="prepTX()"> Send Transaction </a></div>
+        <div class="text-center"><a class="btn btn-primary btn-block" ng-click="generateTx()"> Send Transaction </a></div>
         <div ng-bind-html="prepTXStatus"></div>
       </div>
 

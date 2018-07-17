@@ -90,7 +90,7 @@
               <td class="small text-right">Network:</td>
               <td class="small text-left mono">{{ajaxReq.type}} by {{ajaxReq.service}}</td>
             </tr>
-            <tr>
+        <!--<tr>
               <td class="small text-right">Gas Limit:</td>
               <td class="small text-left mono">{{parsedSignedTx.gasLimit}}</td>
             </tr>
@@ -110,7 +110,7 @@
             <tr>
               <td class="small text-right">Data:</td>
               <td class="small text-left mono text-width-limit"><p>{{parsedSignedTx.data}}</p></td>
-            </tr>
+            </tr>-->
 
           </tbody>
         </table>

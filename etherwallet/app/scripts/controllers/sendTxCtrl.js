@@ -206,6 +206,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
     }
 
     $scope.generateTx = function() {
+        console.log("here");
         if (!$scope.Validator.isValidAddress($scope.tx.to)) {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
@@ -213,24 +214,30 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         var txData = uiFuncs.getTxData($scope);
         txData.gasPrice = $scope.tx.gasPrice ? '0x' + new BigNumber($scope.tx.gasPrice).toString(16) : null;
         txData.nonce = $scope.tx.nonce ? '0x' + new BigNumber($scope.tx.nonce).toString(16) : null;
-
+        console.log("here");
         // set to true for offline tab and txstatus tab
         // on sendtx tab, it pulls gas price from the gasprice slider & nonce
         // if its true the whole txData object is set - don't try to change it
         // if false, replace gas price and nonce. gas price from slider. nonce from server.
         if (txData.gasPrice && txData.nonce) txData.isOffline = true;
+        console.log("here",$scope.tx.value,);
+
 
         if ($scope.tx.sendMode == 'token') {
-            // if the amount of tokens you are trying to send > tokens you have, throw error
-            if (!isEnough($scope.tx.value, $scope.wallet.tokenObjs[$scope.tokenTx.id].balance)) {
-                $scope.notifier.danger(globalFuncs.errorMsgs[0]);
-                return;
-            }
+            // // if the amount of tokens you are trying to send > tokens you have, throw error
+            // if (!isEnough($scope.tx.value, $scope.wallet.tokenObjs[$scope.tokenTx.id].balance)) {
+            //     $scope.notifier.danger(globalFuncs.errorMsgs[0]);
+            //     return;
+            // }
             txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
             txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
             txData.value = '0x00';
+            console.log("here");
+
         }
         uiFuncs.generateTx(txData, function(rawTx) {
+            console.log("here",txData);
+
             if (!rawTx.isError) {
                 $scope.rawTx = rawTx.rawTx;
                 $scope.signedTx = rawTx.signedTx;

@@ -1,0 +1,15 @@
+@media screen and (min-width: 900px)  {
+  /* comes into effect for screens between 321 and 480 pixels (inclusive) */
+  #somethingorother 
+  	{
+  		width:100%;
+  		height:100%;
+  		padding-top: 10px;
+  		display: block;
+  		background-image: url('images/hero-bg.png'); 
+  		background-position: 63% 0%;
+  		background-repeat: no-repeat;
+  	}
+}
+
+

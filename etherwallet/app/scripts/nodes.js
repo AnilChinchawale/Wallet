@@ -1,11 +1,12 @@
 'use strict';
-var nodes = function() {}
+var nodes = function () { }
 nodes.customNode = require('./nodeHelpers/customNode');
 nodes.infuraNode = require('./nodeHelpers/infura');
 nodes.metamaskNode = require('./nodeHelpers/metamask');
 nodes.nodeTypes = {
     ETH: "ETH",
     XDC: "XDC",
+    XDCE:"XDCE",
     /*ETC: "ETC",
     MUS: "MUSIC",
     Ropsten: "ROPSTEN ETH",
@@ -68,30 +69,31 @@ nodes.nodeList = {
         'service': 'xinfin network',
         'lib': require('./nodeHelpers/etherscan')
     },
-    'eth_infura': {
-        'name': 'ETH',
+    // 'eth_infura': {
+    //     'name': 'ETH',
+    //     'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+    //     'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+    //     'type': nodes.nodeTypes.ETH,
+    //     'eip155': true,
+    //     'chainId': 1,
+    //     'tokenList': require('./tokens/ethTokens.json'),
+    //     'abiList': require('./abiDefinitions/ethAbi.json'),
+    //     'service': 'infura.io',
+    //     'lib': new nodes.infuraNode('https://mainnet.infura.io/mew')
+    // },
+    'XDCE': {
+        'name': 'XDCE',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
         'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
-        'type': nodes.nodeTypes.ETH,
+        'type': nodes.nodeTypes.XDCE,
         'eip155': true,
-        'chainId': 1,
-        'tokenList': require('./tokens/ethTokens.json'),
-        'abiList': require('./abiDefinitions/ethAbi.json'),
-        'service': 'infura.io',
-        'lib': new nodes.infuraNode('https://mainnet.infura.io/mew')
-    },
-    'XDC': {
-        'name': 'XDC',
-        'blockExplorerTX': 'http://90.0.0.68:35108/[[txHash]]',
-        'blockExplorerAddr': 'http://90.0.0.68:35108/[[address]]',
-        'type': nodes.nodeTypes.XDC,
-        'eip155': true,
-        'chainId': 9821720740,
-        'tokenList': require('./tokens/xdcTokens.json'),
-        'abiList': require('./abiDefinitions/xdcAbi.json'),
-        'service': 'Xinfin.io',
-        'lib': require('./nodeHelpers/xdc')
-    }/*,
+        'chainId': 3,
+        'tokenList': require('./tokens/xdceTokens.json'),
+        'abiList': require('./abiDefinitions/xdceAbi.json'),
+        'service': 'Xinfin network',
+        'lib': require('./nodeHelpers/xdce')
+    }
+    /*,
     'eth_giveth': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',

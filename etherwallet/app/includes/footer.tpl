@@ -1,19 +1,41 @@
-<section class="pre-footer">
-  <div class="container" id="particles-js">
-    <p>
+<!-- <style>
+  h6{
+    margin-top: 400px;
+  }
+@media only screen and (max-width: 900px) {  
+  h6{
+    margin-top: 900px;
+  }
+}
+</style> -->
+
+<!-- <section class="pre-footer" style="position:inherit;text-align: center;background-color:transparent;margin-top: 350px;padding-bottom: 0px;margin-bottom:0px;">
+  <div class="container" id="particles-js" style="background-color:transparent;padding: 0px;">
+    <p style="display: none;">
       XDCEwallet.com does not hold your keys for you. We cannot access accounts, recover keys, reset passwords, nor reverse transactions. Protect your keys &amp; always check that you are on correct URL.
       <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal">
         You are responsible for your security.
       </a>
     </p>
   </div>
-</section>
+</section> -->
 
-<footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
+<footer class="footer " role="content" aria-label="footer" ng-controller='footerCtrl' style="background-color:transparent;">
 
-  <article class="block__wrap" style="max-width: 1780px; margin: auto;">
+  <div class="col-sm-12" style="height:5%">
+    <!-- <div class="col-sm-8" style="float:left;background-color:#D2A156;height:5%">    --> 
+      <h6 style="text-align:center;font-size:12px;color:#000;">&copy; 2018 xinfin.org Foundation. All rights reserved.</h6>
+    <!-- </div>
+    <div class="col-sm-4" style="background-color:#D2A156;height:5%"> -->
+      <!-- <h6 style="text-align: center;font-size:12px;color:#000;"><a href="support@xinfin.io">support@xinfin.io</a></h6> -->
+    <!-- </div> -->
+  </div>
 
-    <section class="footer--left">
+   <article class="block__wrap " style="display: none;">
+    <!-- <p style="text-align: center;font-weight:bold;color:#fff;">&copy; 2018 xinfin.org Foundation. All rights reserved.</p>
+    <p style="float: right;font-weight:bold;color:#fff;">xinfin.org</p> -->
+
+    <section class="footer--left" style="display: none;">
 
       <a href="/"><img src="images/xinfinewallet_transparent.png" height="45px" width="auto" alt="XinFin Wallet" class="footer--logo"/></a>
 
@@ -45,7 +67,7 @@
 
     </section>
 
-    <section class="footer--cent">
+    <section class="footer--cent" style="display: none;">
         <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
         <p>Consider using our affiliate links to...</p>
         <div class="footer__pill-wrap">
@@ -95,7 +117,7 @@
 
     </section>
 
-    <section class="footer--righ">
+    <section class="footer--righ" style="display: none;">
       <p>
         <a aria-label="website via my ether wallet dot com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener noreferrer" role="link" tabindex="0">
           XinFinEWallet.org
@@ -186,7 +208,7 @@
 
   </article>
 
-</div>
+<!-- </div> -->
 
 
 </footer>

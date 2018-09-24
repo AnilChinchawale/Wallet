@@ -1,7 +1,7 @@
 <main class="tab-pane SendToken active" ng-if="globalService.currentTab==globalService.tabs.SendToken.id" ng-controller='contractsCtrl' ng-cloak ng-init="initContract()">
 
   <!-- Title -->
-  <div class="block text-center" >
+  <div class=" block text-center" >
     <h1>
       <a 
          ng-class="{'isActive': visibility=='interactView'}"

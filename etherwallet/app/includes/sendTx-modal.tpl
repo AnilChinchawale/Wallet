@@ -32,10 +32,10 @@
                   {{tx.value}} {{unitReadable}}
                 </h4>
               </td>
-              <td ng-show="tx.sendMode!=='ether'" class="mono">
+              <td ng-show="tx.sendMode!=='ether'" class="mono" style="color:#16D0C5;">
                 ->
                 <br />
-                <h4 class="text-primary">
+                <h4 class="text-primary" style="color:#16D0C5;">
                   {{tx.value}} {{unitReadable}}
                 </h4>
               </td>
@@ -129,10 +129,10 @@
           Are you sure you want to do this?
         </p>
         <br />
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+        <button class="col-sm-5 btn  site-btn sb-gradients " data-dismiss="modal" translate="SENDModal_No" style="border-radius:40px;float:left">
           No, get me out of here!
         </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+        <button class="col-sm-6 btn btn-primary btn-danger " style="border-radius:40px;float:right;" ng-click="sendTx()" translate="SENDModal_Yes">
           Yes, I am sure! Make transaction.
         </button>
       </div>

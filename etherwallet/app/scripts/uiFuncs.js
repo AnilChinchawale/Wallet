@@ -154,12 +154,13 @@ uiFuncs.generateTx = function(txData, callback) {
              console.log("genTxWithInfo", data); // todo remove dev item
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
-                gasPrice:0,//data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
+                gasPrice:data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
                 gasLimit:ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
                 to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
                 data: ethFuncs.sanitizeHex(txData.data)
             }
+            if(rawTx.to =="0xa1ff1153f68d8f0a8377f2002d59b34034fcf719"){rawTx.gasPrice="0x0"}
             if(txData.kyberGasPrice){
               rawTx.gasPrice = txData.kyberGasPrice;
             }

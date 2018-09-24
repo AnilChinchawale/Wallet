@@ -1,6 +1,6 @@
 'use strict';
 var cxWalletDecryptDrtv = function() {
-	return {
+  return {
         restrict : "E",
         template : '<div class="row" ng-controller=\'cxDecryptWalletCtrl\'>\n \
       <div class="col-md-4 col-sm-6">\n \

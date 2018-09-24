@@ -1,5 +1,5 @@
 <!-- Content -->
-<div class="col-sm-8">
+  <div class="col-sm-7">
 
 
   <!-- If unlocked with address only -->
@@ -51,7 +51,7 @@
 
 
   <!-- If unlocked with PK -->
-  <article class="block" ng-hide="wallet.type=='addressOnly'">
+  <article class="block" ng-hide="wallet.type=='addressOnly'" style="margin-left: 0px;padding-left: 0px;padding-top: 0px;margin-top: 0px;">
 
 
     <!-- To Address -->
@@ -69,52 +69,54 @@
         </label>
       </div>
 
-      <div class="col-sm-11">
+      <div class="col-sm-12">
 
-        <div class="input-group">
-
-          <input type="text"
+        <div class="col-sm-9 input-group">
+          <div class="col-sm-9" style="padding:0px;"> 
+            <input type="text"
                  class="form-control"
                  placeholder="{{ 'SEND_amount_short' | translate }}"
                  ng-model="tx.value"
                  ng-disabled="tx.readOnly || checkTxReadOnly"
-                 ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+                 ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'" style="border-radius: 40px;border:1px solid #16D0C5;width:100%"/>
+          </div>
+          <div class=" col-sm-3" style="padding:0px;margin-top:7px;">
+            <div class=" input-group-btn">
 
-          <div class="input-group-btn">
+              <a style="border-radius: 40px;"
+                 class="btn btn-default"
+                 
+                 ng-click="dropdownAmount = !dropdownAmount"
+                 ng-class="dropdownEnabled ? '' : 'enabled'">
+                  <strong>
+                    {{unitReadable}}
+                    <i class="caret"></i>
+                  </strong>
+              </a>
 
-            <a style="min-width: 170px"
-               class="btn btn-default"
-               
-               ng-click="dropdownAmount = !dropdownAmount"
-               ng-class="dropdownEnabled ? '' : 'disabled'">
-                <strong>
-                  {{unitReadable}}
-                  <i class="caret"></i>
-                </strong>
-            </a>
-
-            <!-- Amount to Send - Dropdown -->
-            <ul class="dropdown-menu dropdown-menu-right"
-                ng-show="dropdownAmount && !tx.readOnly">
-              <li>
-                <a ng-class="{true:'active'}[tx.sendMode=='ether']"
-                   ng-click="setSendMode('ether')">
-                     {{ajaxReq.type}}
-                </a>
-              </li>
-              <li ng-repeat="token in wallet.tokenObjs track by $index"
-                  ng-show="token.balance!=0 &&
-                           token.balance!='loading' &&
-                           token.balance!='Click to Load' &&
-                           token.balance.trim()!='Not a valid ERC-20 token' ||
-                           token.type!=='default'" >
-                  <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]"
-                     ng-click="setSendMode('token', $index, token.getSymbol())" >
-                      {{token.getSymbol()}}
+              <!-- Amount to Send - Dropdown -->
+              <ul class="dropdown-menu dropdown-menu-right"
+                  ng-show="dropdownAmount && !tx.readOnly">
+                <li>
+                  <a ng-class="{true:'active'}[tx.sendMode=='ether']"
+                     ng-click="setSendMode('ether')">
+                       {{ajaxReq.type}}
                   </a>
-              </li>
-            </ul>
+                </li>
+                <li ng-repeat="token in wallet.tokenObjs track by $index"
+                    ng-show="token.balance!=0 &&
+                             token.balance!='loading' &&
+                             token.balance!='Click to Load' &&
+                             token.balance.trim()!='Not a valid ERC-20 token' ||
+                             token.type!=='default'" >
+                    <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]"
+                       ng-click="setSendMode('token', $index, token.getSymbol())" >
+                        {{token.getSymbol()}}
+                    </a>
+                </li>
+              </ul>
 
+            </div>
           </div>
 
         </div>
@@ -134,8 +136,8 @@
       -->
 
       <!-- Amount to Send - Transfer Entire Balance -->
-      <p class="col-xs-12" ng-hide="tx.readOnly">
-        <a ng-click="transferAllBalance()">
+      <p class="col-xs-12" ng-hide="tx.readOnly" style="display:none" >
+        <a ng-click="transferAllBalance()" style="display:none">
           <span class="strong" translate="SEND_TransferTotal">
             Send Entire Balance
           </span>
@@ -148,7 +150,7 @@
 
 
     <!-- Gas Limit -->
-    <section class="row form-group">
+    <!-- <section class="row form-group">
       <div class="col-sm-11 clearfix">
         <a class="account-help-icon"
            href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
@@ -168,11 +170,11 @@
                ng-disabled="tx.readOnly || checkTxReadOnly"
                ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
       </div>
-    </section>
+    </section> -->
 
     <!-- Advanced Option Panel -->
     <a ng-click="showAdvance=true"
-       ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id || tx.data != ""'>
+       ng-show='globalService.currentTab==globalService.tabs.sendTransaction.id || tx.data != ""' style="display:none">
       <p class="strong" translate="TRANS_advanced">
         + Advanced: Add Data
       </p>
@@ -281,13 +283,14 @@
 
     <div class="row form-group">
       <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block"
+        <a class="btn btn-info btn-block site-btn sb-gradients "
            ng-click="generateTx()"
-           translate="SEND_generate">
+           translate="SEND_generate" style="width: 75%;">
               Generate Transaction
         </a>
       </div>
     </div>
+
 
     <div class="row form-group" ng-show="rootScopeShowRawTx">
 
@@ -308,14 +311,16 @@
     </div>
 
     <div class="clearfix form-group" ng-show="rootScopeShowRawTx">
-      <a class="btn btn-primary btn-block col-sm-11"
+      <a class="btn btn-primary btn-block col-sm-11 btn-danger"
          data-toggle="modal"
          data-target="#sendTransaction"
          translate="SEND_trans"
-         ng-click="parseSignedTx( signedTx )">
+         ng-click="parseSignedTx( signedTx )" style="width: 75%;border-radius:40px">
              Send Transaction
       </a>
     </div>
+
+
 
 
   </article>
@@ -328,27 +333,46 @@
 
 
 <!-- Sidebar -->
-<section class="col-sm-4">
 
+<!-- <section class="col-sm-5" style="padding-left: 50px;display: block;background-image: url(images/lap-top2.png);background-repeat: no-repeat;margin-top: -150px;"> -->
+  
+<section class="col-sm-5" >
   <div class="block block--danger"
-       ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
+       ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()" >
 
-    <h5 translate="SWAP_Warning_1">
+    <h5 translate="SWAP_Warning_1" style="color:#fff;" >
       Warning! You do not have enough funds to complete this swap.
     </h5>
 
-    <p translate="SWAP_Warning_2">
+    <p translate="SWAP_Warning_2" style="color:#fff;">
       Please add more funds to your wallet or access a different wallet.
     </p>
 
   </div>
+  
+    <style>
 
-  <wallet-balance-drtv></wallet-balance-drtv>
+        wallet-balance-drtv {
+          color:#fff;
+          
+        }
+
+      @media only screen and (max-width: 900px) {  
+         wallet-balance-drtv {
+           color:#000;
+           
+          }
+      }
+    </style>
+
+
+    <wallet-balance-drtv style=" margin-top: -150px;"></wallet-balance-drtv>
+
 
   <div ng-show="checkTxPage"
        ng-click="checkTxReadOnly=!checkTxReadOnly"
-       class="small text-right text-gray-lighter">
-        <small translate="X_Advanced">
+       class="small text-right text-gray-lighter" style="color:#fff;">
+        <small translate="X_Advanced" >
           Advanced Users Only.
         </small>
   </div>

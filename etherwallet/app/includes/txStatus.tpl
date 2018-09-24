@@ -1,48 +1,103 @@
+<style>
+
+    h1 {
+      font-size: 40px;padding-bottom:0px;text-align: left;
+    }
+
+@media only screen and (min-width: 900px) {  
+    h1 {
+     font-size: 70px;padding-bottom:0px;text-align: left;
+    }
+}
+</style>
 <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.txStatus.id" ng-controller='txStatusCtrl' role="main" ng-cloak>
 
   <!-- Section 1 -->
-  <section class="block txstatus__1">
-    <article class="row">
-      <section class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
-        <h1 translate="NAV_CheckTxStatus">
+  
+    
+  <section class="col-sm-8 block txstatus__1" style="padding-top:40px;margin-left: 0px;padding-left: 10px;">
+    <article class="" style="margin-left: 0px;padding-left: 0px;padding-top: 0px;margin-top: 0px;">
+      <section class=" col-sm-offset-2 text-center" style="margin-left: 0px;padding-left: 0px;color:#000;padding-top: 0px;">
+        <h1 translate="NAV_CheckTxStatus1" >
           Check TX Status
         </h1>
-        <p translate="tx_Summary"></p>
+        <p translate="tx_Summary" style="text-align: justify;padding-top: 0px;width:75%;color:#000;"></p>
       </section>
 
-      <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+      <section class="col-xs-12 col-sm-8 col-sm-offset-3 text-center" style="margin-left: 0px;padding-left: 0px;color:#000;">
           <input
              class="form-control"
              type="text"
              placeholder="0x3f0efedfe0a0cd611f2465fac9a3699f92d6a06613bc3ead4f786856f5c73e9c"
              ng-model="txInfo.hash"
              ng-keyup="$event.keyCode == 13 && checkTxStatus()"
-             aria-label="{{'x_TxHash' | translate}}" ng-class="Validator.isValidTxHash(txInfo.hash) ? 'is-valid' : 'is-invalid'"/>
+             aria-label="{{'x_TxHash' | translate}}" ng-class="Validator.isValidTxHash(txInfo.hash) ? 'is-valid' : 'is-invalid'" style="border-radius: 40px;margin: 0px;border:1px solid #16D0C5;"/>
           <button tabindex="0"
                   role="button"
-                  class="btn btn-primary"
+                  class="btn btn-primary site-btn sb-gradients hero-subscribe-from"
                   ng-click="checkTxStatus()"
-                  translate="NAV_CheckTxStatus"> Check TX Status </button>
+                  translate="NAV_CheckTxStatus" style="margin: 20px;"> Check TX Status </button>
       </section>
     </article>
   </section>
   <!-- / Section 1 -->
+  
 
-
+  
+  
   <!-- Section 2: Current State -->
-  <section class="block txstatus__2" ng-show="txInfo.status==txStatus.mined || txInfo.status==txStatus.notFound || txInfo.status==txStatus.found">
+  <section class="block txstatus__2" ng-show="txInfo.status==txStatus.mined || txInfo.status==txStatus.notFound || txInfo.status==txStatus.found" >
+   
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
-      <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
-      <h5> <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener noreferrer"> {{ tx.hash }} </a> </h5>
-      <p><strong translate="tx_FoundOnChain_1"></strong></p>
-      <ul>
+    <div class="col-sm-7"></div>
+     <style>
+
+        dl {
+          padding-left: 140px;margin-left:650px;float:right;height: 308px;margin-top:-450px;
+           color:#fff;margin-bottom:-140px;
+          
+        }
+       
+      @media only screen and (max-width: 900px) {  
+        dl {
+          padding-left: 0px;margin-left:5px;float:left;height: 300px;margin-top:0px;
+          }
+          
+      }
+    </style>
+     
+  <!-- <div class="col-sm-5 " style="padding-left: 50px;display: block;background-image: url(images/lap-top2.png);background-repeat: no-repeat;margin-left:585px;margin-top:-520px;height: 308px;"> --> 
+  <!-- <table class="col-sm-5 " style="padding-left: 140px;margin-left:585px;float:right;height: 308px;margin-top:-450px;"> -->
+  <dl class="col-sm-5 " >
+    <style>
+
+        h3,h5,a,p {
+          color:#fff;
+          
+        }
+       
+      @media only screen and (max-width: 900px) {  
+        h3,h5,a,p {
+           color:#000;
+          }
+          
+      }
+    </style>
+    
+    <div class=" cont-md" ng-show="txInfo.status == txStatus.mined" >
+      <h3  translate="tx_FoundOnChain" style="padding:10px;padding-left: 0px;"> Transaction Found </h3>
+      <h5 > <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener noreferrer" > {{ tx.hash }} </a> </h5>
+      <p ><strong translate="tx_FoundOnChain_1" ></strong></p>
+      <ul style="display:none;">
         <li translate="tx_FoundOnChain_2"></li>
         <li translate="tx_FoundOnChain_3"></li>
       </ul>
     </div>
+  </dl>
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.notFound">
+ 
+
+    <div class="cont-md" ng-show="txInfo.status == txStatus.notFound" style="display:none;">
       <h3 class="text-danger" translate="tx_notFound">
         Transaction Not Found
       </h3>
@@ -56,8 +111,8 @@
       </ul>
     </div>
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.found">
-      <h3 class="text-warning" translate="tx_foundInPending">
+    <div class="cont-md" ng-show="txInfo.status == txStatus.found" style="display:none;">
+      <h3 class="text-warning" translate="tx_foundInPending" >
         Pending Transaction Found
       </h3>
       <ul>
@@ -67,48 +122,48 @@
       </ul>
     </div>
 
-    <div ng-show="txInfo.status == txStatus.found || txInfo.status == txStatus.mined">
-      <h4 translate="tx_Details" class="cont-md">
+    <div ng-show="txInfo.status == txStatus.found || txInfo.status == txStatus.mined" style="width: 75%;float: left;overflow: auto;color:#000;">
+      <h4 translate="tx_Details" class="cont-md" style="color:#000;">
         Transaction Details
       </h4>
       <br />
-      <table class="table table-striped txstatus__2 cont-md"> <!-- ng-show="tx.status=='foundOnChain' || foundInPending'"-->
+      <table class="table table-striped txstatus__2 cont-md"  > <!-- ng-show="tx.status=='foundOnChain' || foundInPending'"-->
         <tbody>
           <tr>
-            <td translate="x_TxHash">
+            <td translate="x_TxHash" style="color:#000;">
               TX Hash
             </td>
             <td>
-              <a href="https://etherscan.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener noreferrer">
+              <a href="https://etherscan.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener noreferrer" style="color:#000;">
                 {{ txInfo.hash }}
               </a>
             </td>
           </tr>
           <tr>
-            <td translate="OFFLINE_Step1_Label_1">
+            <td translate="OFFLINE_Step1_Label_1" style="color:#000;">
               From Address
             </td>
             <td>
-              <a href="https://etherscan.io/address/{{ txInfo.from }}" target="_blank" rel="noopener noreferrer">
+              <a href="https://etherscan.io/address/{{ txInfo.from }}" target="_blank" rel="noopener noreferrer" style="color:#000;">
                 {{ txInfo.from }}
               </a>
             </td>
           </tr>
           <tr>
-            <td translate="OFFLINE_Step2_Label_1">
+            <td translate="OFFLINE_Step2_Label_1" style="color:#000;">
               To Address
             </td>
             <td>
-              <a href="https://etherscan.io/address/{{ txInfo.to }}" target="_blank" rel="noopener noreferrer">
+              <a href="https://etherscan.io/address/{{ txInfo.to }}" target="_blank" rel="noopener noreferrer" style="color:#000;">
                 {{ txInfo.to }}
               </a>
             </td>
           </tr>
           <tr>
-            <td translate="SEND_amount_short">
+            <td translate="SEND_amount_short" style="color:#000;">
               Amount
             </td>
-            <td>
+            <td style="color:#000;"> 
               {{ txInfo.valueStr }}
             </td>
           </tr>
@@ -117,9 +172,9 @@
               <a class="account-help-icon"
                  href="https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html"
                  target="_blank"
-                 rel="noopener noreferrer">
+                 rel="noopener noreferrer" style="color:#000;">
                    <img src="images/icon-help.svg" class="help-icon" />
-                  <p class="account-help-text" translate="NONCE_Desc"></p>
+                  <p class="account-help-text" translate="NONCE_Desc" style="color:#000;"></p>
               </a>
               <span translate="OFFLINE_Step2_Label_5">
                 Nonce
@@ -134,9 +189,9 @@
               <a class="account-help-icon"
                  href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html"
                  target="_blank"
-                 rel="noopener noreferrer">
+                 rel="noopener noreferrer" style="color:#000;">
                     <img src="images/icon-help.svg" class="help-icon" />
-                    <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+                    <p class="account-help-text" translate="GAS_LIMIT_Desc" style="color:#000;"></p>
               </a>
               <span translate="OFFLINE_Step2_Label_4">
                 Gas Limit
@@ -199,7 +254,7 @@
     </div>
   </section>
   <!-- / Section 2: Current State -->
-
+  
 
   <!-- Section 3:  Unlock -->
   <section class="txstatus__3" ng-show="txInfo.status == txStatus.found">

@@ -113,7 +113,7 @@
                      type="text"
                      placeholder="0x314156..."
                      ng-model="input.value"
-                     ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'"/>
+                     ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'" />
             </div>
             <div class="col-xs-1">
               <div class="addressIdenticon med"

@@ -4,7 +4,7 @@ function initiateWeb3(){
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
         } else {
-            web3 = new Web3(new Web3.providers.HttpProvider("http://62.233.65.7:22004"));
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8546"));
         }
         return web3;
 }

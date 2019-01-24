@@ -1,6 +1,6 @@
 'use strict';
 var xinfin = function() {}
-xinfin.SERVERURL = "http://78.129.212.204:35108/";
+xinfin.SERVERURL = "http://localhost:3000/";
 xinfin.pendingPosts = [];
 xinfin.config = {
     headers: {

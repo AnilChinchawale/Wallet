@@ -17,10 +17,10 @@ router.post('/', cors(), function(req, res) {
 	//console.log("web3 ",web3);
 	for(var i=0; i<result.c.length;i++)
 		balance =balance+result.c[i];
-	balance=balance	+ "00000000000000";
+	balance=web3.eth.getBalance(req.body.address);
 	console.log("Balance: ", result,"req.body.address ",req.body.address,"bignumber",BigNumber(result.c[0]));
 	var hex = bigInt(balance).toString(16);
-    res.status(200).json({status:1,message:"OK",result:"0x"+hex,tp:BigNumber(result.c[0]).div(10000)});
+    res.status(200).json({status:1,message:"OK",result:"0x"+hex,tp:BigNumber(result.c[0])});
 }); 
 
 module.exports = router;

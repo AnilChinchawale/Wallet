@@ -1,6 +1,6 @@
 {
-  "name": "my-xdc-e-wallet-api",
-  "version": "0.0.0",
+  "name": "XDC-Wallet-API",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"

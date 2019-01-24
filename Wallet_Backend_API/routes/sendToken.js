@@ -12,7 +12,7 @@ var web3 = Web3.initiateWeb3();
 
 router.post('/', cors(), function(req, res) {
 		var coin = contract.getCoinInstance();
-		var result = coin.balanceOf(req.body[0].params[0]);
+		var result = web3.eth.getBalance(req.body[0].params[0]);
 		var balance =""+result.c[0]+result.c[1];
 		let temp = parseInt(balance);
 		let hex = temp.toString(16);

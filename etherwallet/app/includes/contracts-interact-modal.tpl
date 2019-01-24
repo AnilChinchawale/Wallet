@@ -72,10 +72,10 @@
 
 
       <div class="modal-footer" ng-show="showRaw">
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+        <button class="btn btn-default " data-dismiss="modal" translate="SENDModal_No">
           No, get me out of here!
         </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+        <button class="btn btn-primary " ng-click="sendTx()" translate="SENDModal_Yes">
           Yes, I am sure! Make transaction.
         </button>
       </div>

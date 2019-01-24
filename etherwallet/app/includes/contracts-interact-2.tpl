@@ -3,10 +3,10 @@
 
   <!-- Contract Info CONTRACT_Interact_CTA -->
   <span class="form-group">
-    <h4 translate="CONTRACT_Interact_Title">
+    <h4 translate="CONTRACT_Interact_Title" hidden="true">
       Read / Write Contract
     </h4>
-    <h5> {{ contract.address }} </h5>
+    <h5 hidden="true"> {{ contract.address }} </h5>
 
     <div class="form-group well"
          ng-show="contract.address=='0x0101010101010101010101010101010101010101' || contract.address=='0x1010101010101010101010101010101010101010'">
@@ -88,7 +88,7 @@
         {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}
         <i class="caret"></i>
       </a>-->
-      <ul class="" ng-show="dropdownContracts">
+      <ul class="" ng-show="dropdownContracts" hidden="true">
         <li ng-repeat="func in contract.functions track by $index">
           <a ng-init="selectFunc($index)">
             {{func.name}}
@@ -102,9 +102,9 @@
   <span class="form-group" ng-show="contract.selectedFunc!=null">
     <div ng-repeat="input in contract.functions[contract.selectedFunc.index].inputs track by $index">
       <div ng-switch on="input.type">
-
         <div class="item write-address" ng-switch-when="address">
-          <label>
+          <h4>To Address</h4>
+          <label hidden="true">
             {{input.name}}<small>{{input.type}}</small>
           </label>
           <div class="row">
@@ -113,7 +113,7 @@
                      type="text"
                      placeholder="0x314156..."
                      ng-model="input.value"
-                     ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'"/>
+                     ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'" />
             </div>
             <div class="col-xs-1">
               <div class="addressIdenticon med"
@@ -122,11 +122,15 @@
                    watch-var="input.value">
               </div>
             </div>
-          </div>
-        </div>
 
+            
+          </div>
+          <h4>Amount To Send</h4>
+        </div>
+  
         <p class="item write-unit256" ng-switch-when="uint256">
-          <label>
+          
+          <label hidden="true">
             {{input.name}} <small> {{input.type}} </small>
           </label>
           <input class="form-control"
@@ -176,7 +180,7 @@
           </span>
         </p>-->
         <p class="item" ng-switch-default>
-          <label> {{input.name}} <small> {{input.type}} </small> </label>
+          <!--<label> {{input.name}} <small> {{input.type}} </small> </label>-->
           <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
         </p>
 
@@ -237,7 +241,7 @@
           <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="22px" height="22px" />  FALSE </span>
         </p>
 
-        <!--  -->
+
         <p class="item" ng-switch-default>
           <label>
             &#8627; {{output.name}}

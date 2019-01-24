@@ -13,21 +13,21 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     name: "NAV_GenerateWallet_alt",
     url: "generate-wallet",
     mew: true,
-    cx: false
+    cx: true
   },
   myWallet: {
     id: 1,
     name: "NAV_MyWallets",
     url: "my-wallet",
     mew: false,
-    cx: true
+    cx: false
   },
   addWallet: {
     id: 2,
     name: "NAV_AddWallet",
     url: "add-wallet",
     mew: false,
-    cx: true
+    cx: false
   },
   sendTransaction: {
     id: 3,
@@ -47,15 +47,15 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     id: 5,
     name: "NAV_Offline",
     url:"offline-transaction",
-    mew: true,
+    mew: false,
     cx: false
   },
-  contracts: {
+  SendToken: {
     id: 6,
-    name: "NAV_Contracts",
-    url: "contracts",
-    mew: true,
-    cx: true
+    name: "Send Token",
+    url: "send-token",
+    mew: false,
+    cx: false
   },
   ens: {
     id:7,
@@ -83,7 +83,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     name: "NAV_ViewWallet",
     url: "view-wallet-info",
     mew: true,
-    cx: false
+    cx: true
   },
   signMsg: {
     id: 11,

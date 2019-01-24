@@ -108,7 +108,7 @@ label + textarea,
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 80%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: .25rem 1rem;
   font-size: @font-size-base;
@@ -399,8 +399,24 @@ input[type="checkbox"] {
   }
 }
 
+.form-control.is-invalid1 {
+  //border-color: lighten(@brand-danger, 25%);
+  border:1px solid #16D0C5;
+  border-radius: 5px;
+  width:75%;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 1px fadeout(@brand-danger, 50%);
+  &:focus {
+    border-color: lighten(@brand-danger, 15%);
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 3px fadeout(@brand-danger, 50%);
+  }
+}
+
 .form-control.is-invalid {
-  border-color: lighten(@brand-danger, 25%);
+  //border-color: lighten(@brand-danger, 25%);
+  border:1px solid #16D0C5;
+  border-radius: 5px;
   outline: 0;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 1px fadeout(@brand-danger, 50%);
   &:focus {

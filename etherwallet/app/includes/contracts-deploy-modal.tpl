@@ -25,10 +25,10 @@
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal" aria-label="Close Deploy Contract Dialog" translate="SENDModal_No">
+        <button class="btn btn-default " data-dismiss="modal" aria-label="Close Deploy Contract Dialog" translate="SENDModal_No">
           No, get me out of here!
         </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+        <button class=" btn btn-primary " ng-click="sendTx()" translate="SENDModal_Yes">
           Yes, I am sure! Make transaction.
         </button>
       </div>

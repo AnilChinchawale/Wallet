@@ -1,21 +1,22 @@
-<main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak ng-init="initContract()">
+<main class="tab-pane SendToken active" ng-if="globalService.currentTab==globalService.tabs.SendToken.id" ng-controller='contractsCtrl' ng-cloak ng-init="initContract()">
 
   <!-- Title -->
-  <div class="block text-center" >
+  <div class=" block text-center" >
     <h1>
-      <a translate="NAV_InteractContract"
+      <a 
          ng-class="{'isActive': visibility=='interactView'}"
          ng-click="setVisibility('interactView')">
-          Interact with Contract
+          Send Token
       </a>
-      or
+      <!--or
       <a translate="NAV_DeployContract"
          ng-class="{'isActive': visibility=='deployView'}"
          ng-click="setVisibility('deployView')">
           Deploy Contract
-      </a>
+      </a>-->
     </h1>
   </div>
+<<<<<<< HEAD
   <!-- Title -->
 
   <!-- Interact Contracts -->
@@ -25,31 +26,34 @@
     @@if (site === 'cx'  ) { @@include( '../includes/contracts-interact-1.tpl', { "site": "cx"  } ) }
 
   </article>-->
+=======
+ 
+>>>>>>> beta2.0
 
   
 
-  <article ng-show="visibility=='interactView'">
+  <article ng-show="visibility=='interactView'" id="particles-js">
 
     @@if (site === 'mew' ) { @@include( '../includes/contracts-interact-modal.tpl', { "site": "mew" } ) }
     @@if (site === 'cx'  ) { @@include( '../includes/contracts-interact-modal.tpl', { "site": "cx"  } ) }
 
   </article>
-  <!-- / Interact Contracts -->
 
 
 
+<<<<<<< HEAD
 
 
   <!-- Deploy Contract -->
+=======
+>>>>>>> beta2.0
   <article class="row block" ng-show="visibility=='deployView'">
 
     @@if (site === 'mew' ) { @@include( '../includes/contracts-deploy-1.tpl', { "site": "mew" } ) }
     @@if (site === 'cx'  ) { @@include( '../includes/contracts-deploy-1.tpl', { "site": "cx"  } ) }
 
   </article>
-  <!-- / Deploy Contract -->
 
-  <!--wallet decrypt-->
   <article class="form-group"
            ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
       <article class="block decrypt-drtv clearfix">
@@ -1196,7 +1200,18 @@
 
   </article>
 
+<<<<<<< HEAD
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView' && btnShowReadWrite">
+=======
+  <article class="row block" ng-show="visibility=='interactView' && showReadWrite">
+
+    @@if (site === 'mew' ) { @@include( '../includes/contracts-interact-2.tpl', { "site": "mew" } ) }
+    @@if (site === 'cx'  ) { @@include( '../includes/contracts-interact-2.tpl', { "site": "cx"  } ) }
+
+  </article>
+
+  <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
+>>>>>>> beta2.0
 
     <button class="btn btn-primary btn-block"
             ng-click="readFromContract()"
@@ -1207,7 +1222,7 @@
     <button class="btn btn-primary btn-block"
             ng-click="generateContractTx()"
             ng-show="!contract.functions[contract.selectedFunc.index].constant">
-      <span translate="CONTRACT_Write"> WRITE </span>
+      <span > Generate Transaction </span>
     </button>
 
     </br>

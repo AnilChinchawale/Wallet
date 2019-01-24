@@ -1,7 +1,7 @@
 <main class="tab-pane active"
       ng-if="globalService.currentTab==globalService.tabs.addWallet.id"
       ng-controller='addWalletCtrl'
-      ng-cloak>
+      ng-cloak >
 
   <h1 translate="NAV_AddWallet"> Add Wallet </h1>
 
@@ -281,7 +281,7 @@
 
 
 
-  <article class="row" ng-if="showAddWallet">
+  <article class="row" ng-if="showAddWallet" >
 
     <hr />
 
@@ -303,7 +303,7 @@
         </span>
       </ul>
 
-      <h5 translate="sidebar_AccountBal">
+      <h5 translate="sidebar_AccountBal" >
         Account Balance:
       </h5>
 
@@ -346,7 +346,7 @@
            Swap via Bity
       </a>
 
-      <h5 translate="sidebar_TransHistory">
+      <h5 translate="sidebar_TransHistory" style="color:#fff;>
         Transaction History:
       </h5>
       <ul class="account-info">

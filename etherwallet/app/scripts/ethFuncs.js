@@ -77,8 +77,10 @@ ethFuncs.getFunctionSignature = function(name) {
 ethFuncs.estimateGas = function(dataObj, callback) {
     var adjustGas = function(gasLimit) {
         if (gasLimit == "0x5209") return "21000";
-        if (new BigNumber(gasLimit).gt(4000000)) return "-1";
+        if (new BigNumber(gasLimit).gt(4000000)) return "2000000";
+		console.log("ethfun:",gasLimit,adjustGas);
         return new BigNumber(gasLimit).toString();
+			
     }
     ajaxReq.getEstimatedGas(dataObj, function(data) {
         if (data.error) {

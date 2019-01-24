@@ -185,8 +185,9 @@ var contractsCtrl = function($scope, $sce, walletService) {
             //comment here and provide value directly
             //if (!$scope.Validator.isValidAddress($scope.contract.address)) throw globalFuncs.errorMsgs[5];
             //else if (!$scope.Validator.isJSON($scope.contract.abi)) throw globalFuncs.errorMsgs[26];
-            $scope.contract.address='0xa0e512419eb21850b169358ae315e4eea2be1bed';
-            $scope.contract.abi='[{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]';
+            $scope.contract.address=ajaxReq.abiList[1].address;
+            $scope.contract.abi=ajaxReq.abiList[1].abi;
+            console.log("Abi List",ajaxReq.abiList[1].abi,"end");
 
             $scope.contract.functions = [];
             var tAbi = JSON.parse($scope.contract.abi);

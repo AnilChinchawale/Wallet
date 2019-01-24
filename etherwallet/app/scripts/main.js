@@ -97,13 +97,13 @@ var darkListConst            = require('./constants/darkListConst');
 var tabsCtrl                 = require('./controllers/tabsCtrl');
 var viewCtrl                 = require('./controllers/viewCtrl');
 var walletGenCtrl            = require('./controllers/walletGenCtrl');
-var onboardingCtrl            = require('./controllers/onboardingCtrl');
+//var onboardingCtrl            = require('./controllers/onboardingCtrl');
 var bulkGenCtrl              = require('./controllers/bulkGenCtrl');
 var decryptWalletCtrl        = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl           = require('./controllers/viewWalletCtrl');
 var txStatusCtrl              = require('./controllers/txStatusCtrl');
 var sendTxCtrl               = require('./controllers/sendTxCtrl');
-//var swapCtrl                 = require('./controllers/swapCtrl');
+var swapCtrl                 = require('./controllers/swapCtrl');
 var signMsgCtrl              = require('./controllers/signMsgCtrl');
 var contractsCtrl            = require('./controllers/contractsCtrl');
 var contractsCtrl2           = require('./controllers/contractsCtrl2');
@@ -140,6 +140,21 @@ app.config(['$translateProvider', function($translateProvider) {
 app.config(['$animateProvider', function($animateProvider) {
     $animateProvider.classNameFilter(/^no-animate$/);
 }]);
+app.config(['$httpProvider', function($httpProvider) {
+    //initialize get if not there
+    if (!$httpProvider.defaults.headers.get) {
+        $httpProvider.defaults.headers.get = {};    
+    }    
+
+    // Answer edited to include suggestions from comments
+    // because previous version of code introduced browser-related errors
+
+    //disable IE ajax request caching
+    $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+    // extra
+    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+    $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
+}]);
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
 app.factory('walletService', walletService);
 app.directive('blockieAddress', blockiesDrtv);
@@ -154,12 +169,12 @@ app.controller('tabsCtrl', ['$scope', 'globalService', '$translate', '$sce', tab
 app.controller('viewCtrl', ['$scope', 'globalService', '$sce', viewCtrl]);
 app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
-app.controller('onboardingCtrl', ['$scope', onboardingCtrl]);
+//app.controller('onboardingCtrl', ['$scope', onboardingCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('txStatusCtrl', ['$scope', txStatusCtrl]);
 app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', '$rootScope', sendTxCtrl]);
-//app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
+app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller('contractsCtrl2', ['$scope', '$sce', 'walletService', contractsCtrl2]);

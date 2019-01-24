@@ -1,7 +1,9 @@
 <!--email_off-->
 @@include( '../includes/header.tpl', { "site": "mew" } )
 
-<section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+
+<section class="container" ng-controller='viewCtrl' style="min-height: 94%;">
+
 
   <div class="tab-content" >
 
@@ -9,9 +11,9 @@
 
     @@include( '../includes/sendTx.tpl',             { "site": "mew" } )
 
-    <!--@@include( '../includes/swap.tpl',               { "site": "mew" } )-->
+    @@include( '../includes/swap.tpl',               { "site": "mew" } )
 
-    @@include( '../includes/offlineTx.tpl',          { "site": "mew" } )
+    <!--@@include( '../includes/offlineTx.tpl',          { "site": "mew" } )-->
 
     @@include( '../includes/contracts.tpl',          { "site": "mew" } )
 
@@ -33,6 +35,8 @@
   @@include('../includes/alerts.tpl')
 
 </section>
+
+
 
 @@include( '../includes/footer.tpl', { "site": "mew" } )
 <!--/email_off-->

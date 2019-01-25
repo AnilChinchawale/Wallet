@@ -16,19 +16,7 @@
       </a>-->
     </h1>
   </div>
-<<<<<<< HEAD
-  <!-- Title -->
-
-  <!-- Interact Contracts -->
-  <!--<article class="row block" ng-show="visibility=='interactView'">
-
-    @@if (site === 'mew' ) { @@include( '../includes/contracts-interact-1.tpl', { "site": "mew" } ) }
-    @@if (site === 'cx'  ) { @@include( '../includes/contracts-interact-1.tpl', { "site": "cx"  } ) }
-
-  </article>-->
-=======
  
->>>>>>> beta2.0
 
   
 
@@ -41,12 +29,6 @@
 
 
 
-<<<<<<< HEAD
-
-
-  <!-- Deploy Contract -->
-=======
->>>>>>> beta2.0
   <article class="row block" ng-show="visibility=='deployView'">
 
     @@if (site === 'mew' ) { @@include( '../includes/contracts-deploy-1.tpl', { "site": "mew" } ) }
@@ -1200,9 +1182,6 @@
 
   </article>
 
-<<<<<<< HEAD
-  <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView' && btnShowReadWrite">
-=======
   <article class="row block" ng-show="visibility=='interactView' && showReadWrite">
 
     @@if (site === 'mew' ) { @@include( '../includes/contracts-interact-2.tpl', { "site": "mew" } ) }
@@ -1211,7 +1190,6 @@
   </article>
 
   <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
->>>>>>> beta2.0
 
     <button class="btn btn-primary btn-block"
             ng-click="readFromContract()"

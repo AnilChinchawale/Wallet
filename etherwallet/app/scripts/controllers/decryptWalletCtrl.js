@@ -1,6 +1,5 @@
 'use strict';
 var decryptWalletCtrl = function($scope, $sce, walletService) {
-    $scope.showReadWrite=false;
     $scope.walletType = "";
     $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = $scope.showParityDecrypt = false;
     $scope.filePassword = "";
@@ -267,7 +266,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.wallet.type = "default";
     }
     $scope.decryptWallet = function() {
-        $scope.$sce('contractsCtrl',{})
         $scope.wallet = null;
         try {
           if ($scope.showPDecrypt && $scope.requirePPass) {
